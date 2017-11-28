@@ -5,7 +5,7 @@ import {
   utils
 } from '@olympusat/oly-sdk';
 
-const {
+const { 
   GateController,
   UserController,
   SessionController,
