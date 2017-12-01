@@ -1,7 +1,7 @@
 {
-  "name": "react-oly-gate",
-  "version": "3.5.6", 
-  "description": "Olympusat React Gate",
+  "name": "oly-client-gate",
+  "version": "0.0.2", 
+  "description": "Olympusat Client SDK Auth0 Gate",
   "main": "index.js",
   "scripts": {
     "start": "gulp watch",
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:OlympusatDevelopment/react-oly-gate.git"
+    "url": "git@github.com:OlympusatDevelopment/oly-client-gate.git"
   },
   "author": "Adam Gedney <adam@olympusat.com>",
   "license": "ISC",
-  "homepage": "https://github.com/OlympusatDevelopment/react-oly-gate",
+  "homepage": "https://github.com/OlympusatDevelopment/oly-client-gate",
   "devDependencies": {
     "babel-core": "^6.10.4",
     "babel-plugin-transform-react-jsx": "^6.23.0",

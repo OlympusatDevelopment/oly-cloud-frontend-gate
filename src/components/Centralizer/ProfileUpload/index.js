@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {default as styles} from './styles';
-import utils,{l} from '../../../utils';
 
 export class ProfileUpload extends Component{
 	constructor(props){
@@ -11,7 +10,7 @@ export class ProfileUpload extends Component{
 			uploadButton:styles.uploadButton
 		}
 	}
-
+ 
 	componentWillReceiveProps(){
 		this.setState({user:this.props.user});
 	}

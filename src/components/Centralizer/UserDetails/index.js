@@ -9,7 +9,7 @@ export class UserDetails extends Component{
 			user:{}
 		}
 	}
-
+ 
 	componentWillReceiveProps(){
 		this.setState({user:this.props.user});
 	}

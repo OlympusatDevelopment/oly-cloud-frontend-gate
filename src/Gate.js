@@ -6,12 +6,12 @@ import {
 } from '@olympusat/oly-sdk';
 
 const { 
-  GateController,
-  UserController,
+  GateController, 
+  UserController, 
   SessionController,
   PermissionsController,
   AuthController,
-} = Controllers;
+} = Controllers; 
 const pjson = require('../package.json');
 
 /** 
@@ -50,14 +50,14 @@ function Gate(options) {
       // debugLogger('** ROG : revealGate Ran showCentralizer');
       window.Oly.UI.showCentralizer();
     } else {
-      if (options.displayOnAuthPage) {
-        // Handle displaying as a modal based on login button click here
-      } else {
-        if (window.Oly) {
-          // debugLogger('** ROG : revealGate Ran showGate');
-          window.Oly.UI.showGate();
-        }
-      }
+      // if (options.displayOnAuthPage) {
+      //   // Handle displaying as a modal based on login button click here
+      // } else {
+      //   if (window.Oly) {
+      //     // debugLogger('** ROG : revealGate Ran showGate');
+      //     window.Oly.UI.showGate();
+      //   }
+      // }
     }
   };
 

@@ -1,12 +1,18 @@
-'use strict';
-
-var _config = require('../config');
+import {
+  IDENTITY_POOL_ID,
+  LOGIN_ID,
+  USER_POOL_ID,
+  COGNITO_CLIENT_ID,
+  HOST,
+  AUTH_ROL,
+  REGION
+} from '../config'; 
 
 var AWSIoTData = require('aws-iot-device-sdk');
 
-AWS.config.region = _config.REGION;
+AWS.config.region = REGION;
 
-(function () {
+(function() {
   "use strict";
 
   function LogMsg(type, content) {
@@ -24,12 +30,12 @@ AWS.config.region = _config.REGION;
     this.logs = [];
   }
 
-  LogService.prototype.log = function (msg) {
+  LogService.prototype.log = function(msg) {
     var logObj = new LogMsg("success", msg);
     this.logs.push(logObj);
   };
 
-  LogService.prototype.logError = function (msg) {
+  LogService.prototype.logError = function(msg) {
     var logObj = new LogMsg("error", msg);
 
     this.logs.push(logObj);
@@ -42,19 +48,19 @@ AWS.config.region = _config.REGION;
    */
   function ReceivedMsg(topic, message) {
     this.topic = topic;
-    this.message = message;
+    this.message = message
     this.receivedTime = Date.now();
   }
 
   /** controller of the app */
   function AppController(scope) {
     this.clientId = "mqtt-client-" + Math.floor(Math.random() * 100000 + 1);
-    this.endpoint = _config.HOST;
+    this.endpoint = HOST;
     this.identityId = null;
     this.accessKey = null;
     this.secretKey = null;
     this.sessionToken = null;
-    this.regionName = _config.REGION;
+    this.regionName = REGION;
     this.user = '';
     this.password = '';
     this.scope = scope;
@@ -66,39 +72,44 @@ AWS.config.region = _config.REGION;
 
   AppController.$inject = ["$scope"];
 
-  AppController.prototype.connectToCognito = function () {
-    var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails({
+  AppController.prototype.connectToCognito = function() {
+    var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider
+      .AuthenticationDetails({
       Username: this.user,
       Password: this.password
     });
 
-    var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool({
-      UserPoolId: _config.USER_POOL_ID,
-      ClientId: _config.COGNITO_CLIENT_ID
+    var userPool = new AWSCognito.CognitoIdentityServiceProvider
+      .CognitoUserPool({
+      UserPoolId: USER_POOL_ID,
+      ClientId: COGNITO_CLIENT_ID
     });
 
-    var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser({
+    var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider
+      .CognitoUser({
       Username: this.user,
       Pool: userPool
     });
 
     var _this = this;
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function onSuccess(result) {
+      onSuccess: function(result) {
         var loginMap = {};
-        loginMap[_config.LOGIN_ID] = result.getIdToken().getJwtToken();
+        loginMap[LOGIN_ID] = result.getIdToken().getJwtToken();
 
         /*Use the idToken for Logins Map when Federating User Pools with Cognito Identity or when passing through an Authorization Header to an API Gateway Authorizer*/
 
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: _config.IDENTITY_POOL_ID,
+          IdentityPoolId: IDENTITY_POOL_ID,
           Logins: loginMap,
           RoleArn: "arn:aws:iam::603127604728:role/Cognito_UserServiceAuth_Role"
         });
 
-        AWS.config.credentials.get(function (err, data) {
+        AWS.config.credentials.get(function(err, data) {
           if (!err) {
-            console.log("Retrieved identityId: " + AWS.config.credentials.identityId);
+            console.log(
+              "Retrieved identityId: " + AWS.config.credentials.identityId
+            );
             var cognitoIdentity = new AWS.CognitoIdentity();
             _this.accessKey = AWS.config.credentials.accessKeyId;
             _this.secretKey = AWS.config.credentials.secretAccessKey;
@@ -111,53 +122,56 @@ AWS.config.region = _config.REGION;
         });
       },
 
-      onFailure: function onFailure(err) {
+      onFailure: function(err) {
         console.log(err);
         _this.logs.logError(err.toString());
       }
     });
   };
 
-  AppController.prototype.createClient = function () {
+  AppController.prototype.createClient = function() {
 
     var client = AWSIoTData.device({
-      //
-      // Set the AWS region we will operate in.
-      //
-      region: this.regionName,
-      //
-      ////Set the AWS IoT Host Endpoint
-      host: this.endpoint.toLowerCase(),
-      //
-      // Use the clientId created earlier.
-      //
-      clientId: this.clientId,
-      //
-      // Connect via secure WebSocket
-      //
-      protocol: 'wss',
-      //
-      // Set the maximum reconnect time to 8 seconds; this is a browser application
-      // so we don't want to leave the user waiting too long for reconnection after
-      // re-connecting to the network/re-opening their laptop/etc...
-      //
-      maximumReconnectTimeMs: 5000,
-      //
-      // Enable console debugging information (optional)
-      //
-      // debug: true,
-      accessKeyId: this.accessKey,
-      secretKey: this.secretKey,
-      sessionToken: this.sessionToken
+        //
+        // Set the AWS region we will operate in.
+        //
+        region: this.regionName,
+        //
+        ////Set the AWS IoT Host Endpoint
+        host: this.endpoint.toLowerCase(),
+        //
+        // Use the clientId created earlier.
+        //
+        clientId: this.clientId,
+        //
+        // Connect via secure WebSocket
+        //
+        protocol: 'wss',
+        //
+        // Set the maximum reconnect time to 8 seconds; this is a browser application
+        // so we don't want to leave the user waiting too long for reconnection after
+        // re-connecting to the network/re-opening their laptop/etc...
+        //
+        maximumReconnectTimeMs: 5000,
+        //
+        // Enable console debugging information (optional)
+        //
+       // debug: true,
+        accessKeyId: this.accessKey,
+        secretKey: this.secretKey,
+        sessionToken: this.sessionToken
     });
-    var client = new ClientController(this.scope, this.clientId, client, this.logs);
+      var client = new ClientController(this.scope, this.clientId, client, this.logs);
+      
+      this.clients.push(client);  
 
-    this.clients.push(client);
+      if (this.scope && !this.scope.$$phase) {
+        this.scope.$digest();
+      }
 
-    if (this.scope && !this.scope.$$phase) {
-      this.scope.$digest();
-    }
+
   };
+
 
   function ClientController(scope, clientName, client, logs) {
     this.clientName = clientName;
@@ -169,10 +183,10 @@ AWS.config.region = _config.REGION;
     this.logs = logs;
     var self = this;
 
-    this.client.on("connect", function () {
+    this.client.on("connect", function() {
       self.logs.log("connected");
     });
-    this.client.on("message", function (topic, msg) {
+    this.client.on("message", function(topic, msg) {
       console.log(msg.toString());
       self.logs.log("messageA received in " + topic);
       self.msgs.push(new ReceivedMsg(topic, msg.toString()));
@@ -182,19 +196,21 @@ AWS.config.region = _config.REGION;
     });
   }
 
-  ClientController.prototype.subscribe = function () {
+  ClientController.prototype.subscribe = function() {
     this.client.subscribe(this.topicName);
   };
 
-  ClientController.prototype.publish = function () {
+  ClientController.prototype.publish = function() {
     this.client.publish(this.topicName, this.message);
   };
 
-  ClientController.prototype.msgInputKeyUp = function ($event) {
+  ClientController.prototype.msgInputKeyUp = function($event) {
     if ($event.keyCode === 13) {
       this.publish();
     }
   };
 
-  angular.module("awsiot.sample", []).controller("AppController", AppController);
+  angular
+    .module("awsiot.sample", [])
+    .controller("AppController", AppController);
 })();
