@@ -6,7 +6,7 @@ import {MainMenu} from './MainMenu';
 import {ProfileUpload} from './ProfileUpload';
 // import {Events} from '../../Events';
 // import utils,{l}  from '../../utils';
-import { Events, utils } from '@olympusat/oly-sdk';
+import { Events, utils } from '@olympusat/oly-client-sdk';
 
 const {
     MAIN_MENU,
@@ -82,7 +82,9 @@ export class Centralizer extends Component{
 	}
 
 	signOut(){
-		window.Oly.Auth.logout();
+		// window.Oly.Auth.logout();
+    window.Oly.Auth0.logout();
+    window.location.href = '/';
 	}
 
 	/**
@@ -115,7 +117,7 @@ export class Centralizer extends Component{
 					<p style={styles.headerText}>
 						<span style={styles.headerName} className="bold" title={user.email}>{user.name}</span>
 						<br/>
-						{user.company || ''}
+						{user.company || user.email}
 					</p>
 					<div style={styles.headerGravatar} className="olyauth__centralizerHeaderGravatar" onClick={this.toggleUserDetails.bind(this)}>
 						<img style={styles.headerGravatarImg} src={user.profile} alt={user.name}/>

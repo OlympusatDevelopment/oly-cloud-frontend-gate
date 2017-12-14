@@ -11,7 +11,7 @@ npm i -S oly-sdk react-oly-gate
 
 
 ```
-  import {Oly} from '@olympusat/oly-sdk';
+  import {Oly} from '@olympusat/oly-client-sdk';
   import {Gate} from '@olympusat/react-oly-gate';
 
   import getOlySdkOptions from "./olySdkOptions";

@@ -3,17 +3,14 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Gate } from '../components/Gate';
 import { Centralizer } from '../components/Centralizer';
-// import {AppsModel} from '../models/AppsModel';
-// import {UserController} from './UserController';
-// import {Events} from '../Events';
+import decode from 'jwt-decode';
 
 import {
   Events,
   Controllers,
   Models
-} from '@olympusat/oly-sdk';
+} from '@olympusat/oly-client-sdk';
 
 const { UserController } = Controllers;
 const { AppsModel } = Models;
@@ -27,7 +24,6 @@ export function UIController(options) {
  * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.
  */
   this.showCentralizer = () => {
-    this.hideGate();
     let self = this,
       wrapper = document.createElement("div"),
       script = document.createElement('script');
@@ -46,6 +42,7 @@ export function UIController(options) {
     // Get the user before we render anything
     userController.getCurrentUser()
       .then(user => {
+        user.profile = user.picture;// Map for Legacy
         return appsModel.listActive()
           .then(apps => {
             const $injectElem = document.getElementById('olyauth__centralizer');
@@ -70,46 +67,8 @@ export function UIController(options) {
     }
   };
 
-  /**
- * Creates a new element and appends the React component
- */
-  this.showGate = () => {
-    this.hideCentralizer();
-    const self = this,
-      wrapper = document.createElement("div");
-
-    wrapper.id = 'olyauth__wrapper';
-    wrapper.style.position = 'absolute';
-    wrapper.style.top = '0';
-    wrapper.style.right = '0';
-    wrapper.style.bottom = '0';
-    wrapper.style.left = '0';
-
-    document.body.appendChild(wrapper);
-
-    const $injectElem = document.getElementById('olyauth__wrapper');
-
-    if ($injectElem) {
-      ReactDOM.render(<Gate component={{ slug: 'login', options }} />, $injectElem);
-
-      events.onGateShow(true);//HOOK
-    }
-  }
-
-  this.hideGate = () => {
-    const $injectElem = document.getElementById('olyauth__wrapper');
-
-    if ($injectElem) {
-      document.body.removeChild($injectElem);
-
-      events.onGateHide(true);//HOOK
-    }
-  }
-
   return {
     showCentralizer: this.showCentralizer,
-    hideCentralizer: this.hideCentralizer,
-    showGate: this.showGate,
-    hideGate: this.hideGate
+    hideCentralizer: this.hideCentralizer
   }
 }

@@ -3,7 +3,7 @@ import { UIController } from './controllers/UIController';
 import {
   Controllers,
   utils
-} from '@olympusat/oly-sdk';
+} from '@olympusat/oly-client-sdk';
 
 const { 
   GateController, 
@@ -32,7 +32,7 @@ function Gate(options) {
   }
 
   // if(options.debugMode){ 
-  console.log(`react-oly-gate | version ${pjson.version}`);
+  console.log(`${pjson.name} | version ${pjson.version}`);
   // }
 
 	/** 
@@ -49,15 +49,6 @@ function Gate(options) {
     if (window.Oly && window.Oly.Permissions.loggedIn()) {
       // debugLogger('** ROG : revealGate Ran showCentralizer');
       window.Oly.UI.showCentralizer();
-    } else {
-      // if (options.displayOnAuthPage) {
-      //   // Handle displaying as a modal based on login button click here
-      // } else {
-      //   if (window.Oly) {
-      //     // debugLogger('** ROG : revealGate Ran showGate');
-      //     window.Oly.UI.showGate();
-      //   }
-      // }
     }
   };
 
