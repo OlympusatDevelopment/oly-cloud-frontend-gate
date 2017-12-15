@@ -4,8 +4,6 @@ import headerStyles from './headerStyles';
 import {UserDetails} from './UserDetails';
 import {MainMenu} from './MainMenu';
 import {ProfileUpload} from './ProfileUpload';
-// import {Events} from '../../Events';
-// import utils,{l}  from '../../utils';
 import { Events, utils } from '@olympusat/oly-client-sdk';
 
 const {

@@ -1,6 +1,6 @@
 {
   "name": "oly-client-gate",
-  "version": "0.0.2", 
+  "version": "0.0.2",
   "description": "Olympusat Client SDK Auth0 Gate",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-node6": "^11.0.0",
+    "babel-cli": "^6.23.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",
@@ -30,25 +31,10 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "@olympusat/oly-client-sdk": "^3.5.2",
-    "amazon-cognito-identity-js": "1.8.0",
-    "aws-sdk": "2.7.9",
-    "axios": "^0.15.3",
-    "babel-cli": "^6.23.0",
-    "babel-preset-node6": "^11.0.0",
-    "bluebird": "^3.4.7",
-    "fast-memoize": "^2.2.7",
-    "jwt-decode": "^2.1.0",
-    "query-parse": "^1.0.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
-    "underscore": "^1.8.3"
+    "react-dom": "^15.4.2"
   },
   "peerDependencies": {
-    "babel-polyfill": "^6.23.0",
-    "aws-iot-device-sdk": "^2.0.1"
+    "babel-polyfill": "^6.23.0"
   }
 }

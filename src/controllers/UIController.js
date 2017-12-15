@@ -1,11 +1,8 @@
 /**
  * Handles interfacing with UI functionality ie. show/hide gate & centralizer
  */
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
-import decode from 'jwt-decode';
-
 import {
   Events,
   Controllers,

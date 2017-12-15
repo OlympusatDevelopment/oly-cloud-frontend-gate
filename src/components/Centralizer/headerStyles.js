@@ -1,4 +1,5 @@
-const options = JSON.parse(localStorage.getItem('olyauth.client')) || {};
+import { OPTIONS_LS_KEY } from '../../utils/constants';
+const options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || {};
 
 export default `
 

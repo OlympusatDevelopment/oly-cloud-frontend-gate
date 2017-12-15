@@ -1,44 +1,44 @@
-import React,{Component} from 'react';
-import {default as styles} from './styles';
+import { Component } from 'react';
+import { default as styles } from './styles';
 
-export class ProfileUpload extends Component{
-	constructor(props){
-        super(props);
-		this.state = {
-			user:{},
-			filename:'',
-			uploadButton:styles.uploadButton
-		}
-	}
- 
-	componentWillReceiveProps(){
-		this.setState({user:this.props.user});
-	}
+export class ProfileUpload extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      filename: '',
+      uploadButton: styles.uploadButton
+    }
+  }
 
-	onFileChange(e){
-		const filename = document.getElementById('olyauth.file').files[0].name;
+  componentWillReceiveProps() {
+    this.setState({ user: this.props.user });
+  }
 
-		this.setState({filename,uploadButton:styles.uploadButtonActive});
-	}
+  onFileChange(e) {
+    const filename = document.getElementById('olyauth.file').files[0].name;
 
-	render(){
-		const self = this,
-			  user = this.state.user,
-			  parentStyles = this.props.parentStyles;
+    this.setState({ filename, uploadButton: styles.uploadButtonActive });
+  }
 
-		return (
-			<div className="olyauth__profileUpload" style={styles.olyauth__profileUpload}>
-				<div className="olyauth__profileUploadInner" style={styles.olyauth__profileUploadInner}>
-					<h4 style={styles.h4}>Upload Image</h4>
+  render() {
+    const self = this,
+      user = this.state.user,
+      parentStyles = this.props.parentStyles;
 
-					<form style={styles.uploadForm} encType="multipart/form-data" onSubmit={this.props.onFileUploadSubmit}>
-						<input id="olyauth.file" name="olyauth.file" type="file" multiple accept='image/*' style={styles.fileInput} onChange={this.onFileChange}/>
+    return (
+      <div className="olyauth__profileUpload" style={styles.olyauth__profileUpload}>
+        <div className="olyauth__profileUploadInner" style={styles.olyauth__profileUploadInner}>
+          <h4 style={styles.h4}>Upload Image</h4>
 
-						<p style={styles.filename}>{this.state.filename}</p>
-						<input style={this.state.uploadButton} type="submit" value="Upload"/>
-					</form>
-				</div>
-			</div>
-		)
-	}
+          <form style={styles.uploadForm} encType="multipart/form-data" onSubmit={this.props.onFileUploadSubmit}>
+            <input id="olyauth.file" name="olyauth.file" type="file" multiple accept='image/*' style={styles.fileInput} onChange={this.onFileChange} />
+
+            <p style={styles.filename}>{this.state.filename}</p>
+            <input style={this.state.uploadButton} type="submit" value="Upload" />
+          </form>
+        </div>
+      </div>
+    )
+  }
 }
