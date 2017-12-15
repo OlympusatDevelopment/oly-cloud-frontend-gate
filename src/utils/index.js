@@ -1,56 +1,79 @@
-import fltrs from './filters';
-import cllctns from './collections';
-import qrs from './queries';
+import { 
+  OPTIONS_LS_KEY,
+  INTERFACE_MESSAGE
+} from './constants';
+import * as constants from './constants';
 
-const utils = {
-    convertUNIXToHumanDate(UNIX_timestamp){
-        if (UNIX_timestamp == undefined) { return '';}
-        if (UNIX_timestamp.toString().length < 12) { UNIX_timestamp = UNIX_timestamp * 1000;}//Convert seconds to ms
+let options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || (window.Oly ? window.Oly.options : null);
 
-        const a       = new Date(+UNIX_timestamp),
-              options = {
-                  weekday: "short", year: "numeric", month: "short",
-                  day : "numeric", hour: "2-digit", minute: "2-digit"
-              };
+export default {
+  constants,
+  options: undefined,
+  OlyAuthMeta: {
+    logo: options ? options.logo : '',
+    brandingColor: options ? options.brandingColor : '',
+    title: options ? options.title : ''
+  },
 
-        return a.toLocaleTimeString("en-us", options);//@todo, can we set language using our app's language here?
+  form: {
+    diffPasswords(p1, p2) {
+      return p1 === p2;
     },
+    parse(form) {
+      const $inputs = Array.prototype.slice.call(document.getElementsByTagName('input'));// COnvert to iterable array
+      let obj = {};
 
-    propToTitleCase : (camelCase) => camelCase
-        .replace(/([A-Z])/g, (match) => ` ${match}`)
-        .replace(/^./, (match) => match.toUpperCase())
+      $inputs.forEach(input => {
+        const name = input.getAttribute('name');
+
+        // If it has a name, send it to our object
+        if (name) {
+          obj[name.split('.')[1]] = input.value;
+        }
+      }); 
+
+      return obj;
+    }
+  },
+
+	/**
+	 * Change the Gate interface
+	 * @param slug
+	 */
+  sendToInterface(slug, data) {
+		/**
+		 * Set the url & fire an event to be picked up by the parent component to
+		 * switch the interface according to the link clicked
+		 * @type {string}
+		 */
+    window.location.href = `${document.location.origin}/auth#slug=${slug}`;
+    let event = document.createEvent('Event');
+    event.initEvent('interfaceChange', true, true);
+    event.slug = slug;
+
+    if (data) {
+      event.d = data;
+    }
+
+    document.dispatchEvent(event);
+  },
+
+  getMessageFromOptions(key) {
+    return (window.Oly
+      && window.Oly.options
+      && window.Oly.options.messages
+      && window.Oly.options.messages[key])
+      ? window.Oly.options.messages[key]
+      : false;
+  },
+
+  getTitleFromOptions(rootKey, key) {
+    return (window.Oly
+      && window.Oly.options
+      && window.Oly.options.titles
+      && window.Oly.options.titles[rootKey]
+      && window.Oly.options.titles[rootKey][key])
+      ? window.Oly.options.titles[rootKey][key]
+      : false;
+  }
 };
-
-//export function* sagaRequest(fn, fnParams, CON_SUCCESS, CON_FAIL, {take,call,put,select,cancel,takeLatest}) {
-//    try {
-//        let res = yield fn(fnParams);
-//        l('SAGA', res);
-//
-//        // Catch the error and notify the user
-//        if(res.hasOwnProperty('Error')){
-//            utils.notify({message: `Server error: ${JSON.stringify(res.Error)}`, level: 'error', position: 'br'});
-//            res = null;
-//        }
-//
-//        yield put({type: CON_SUCCESS, data: res});
-//    } catch (err) {
-//        l('SAGA ERR', err);
-//        utils.notify({message: JSON.stringify(err), level: 'error', position: 'br'});
-//
-//        yield put({type: CON_FAIL, err});
-//    }
-//}
-//
-//export function* sagaRequestSetup(fn, CON, {take,call,put,select,cancel,takeLatest}) {
-//    const watcher = yield takeLatest(CON, fn);
-//
-//    // Suspend execution until location changes
-//    yield cancel(watcher);
-//}
-
-export const filters = fltrs;
-export const collections = cllctns;
-export const queries = qrs;
-export let l = window.location.hostname === 'localhost' ? console.log : ()=> {};
-export const makeHumanDate = utils.convertUNIXToHumanDate;
-export default utils;

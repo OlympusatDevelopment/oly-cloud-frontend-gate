@@ -1,2 +1,0 @@
-export const FILTER_CHANGE = 'dl/FILTER_CHANGE';
-export const UPDATE_SEARCH_INPUT = 'dl/UPDATE_SEARCH_INPUT';
