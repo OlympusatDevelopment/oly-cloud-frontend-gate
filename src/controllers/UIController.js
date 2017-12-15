@@ -1,16 +1,17 @@
 /**
  * Handles interfacing with UI functionality ie. show/hide gate & centralizer
  */
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
 import {
   Events,
   Controllers,
-  Models
+  Models 
 } from '@olympusat/oly-client-sdk';
 
 const { UserController } = Controllers;
-const { AppsModel } = Models;
+const { AppsModel } = Models; 
 
 export function UIController(options) {
   const userController = new UserController(options);

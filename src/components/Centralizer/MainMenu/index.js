@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { default as styles } from './styles';
 
 export class MainMenu extends Component {
