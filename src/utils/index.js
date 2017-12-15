@@ -37,43 +37,6 @@ export default {
   },
 
 	/**
-	 * Used for user feedback after a form submit
-	 * Fires the message event to the parent to uinstruct it display the Message component
-	 * @param message
-	 * @param subMessage
-	 */
-  displaySuccessFailMessage(message, subMessage) {
-    let event = document.createEvent('Event');
-
-    window.location.href = `${document.location.origin}/auth#slug=${INTERFACE_MESSAGE}`;
-
-    event.initEvent('interfaceChange', true, true);
-    event.slug = INTERFACE_MESSAGE;
-    event.message = message;
-    event.subMessage = subMessage;
-
-    document.dispatchEvent(event);
-  },
-
-  handleLinkClick(e) {
-    e.preventDefault();
-    const $target = e.target,
-      link = $target.getAttribute('href');
-
-		/**
-		 * Set the url & fire an event to be picked up by the parent component to
-		 * switch the interface according to the link clicked
-		 * @type {string}
-		 */
-    window.location.href = document.location.origin + link;
-    let event = document.createEvent('Event');
-    event.initEvent('interfaceChange', true, true);
-    event.slug = link.split('#slug=')[1];
-
-    document.dispatchEvent(event);
-  },
-
-	/**
 	 * Change the Gate interface
 	 * @param slug
 	 */
@@ -93,10 +56,6 @@ export default {
     }
 
     document.dispatchEvent(event);
-  },
-
-  removeQuotesFromJSONKeys(str) {
-    return str.replace(/\"([^(\")"]+)\":/g, "$1:");
   },
 
   getMessageFromOptions(key) {
