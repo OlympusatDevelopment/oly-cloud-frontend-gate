@@ -7,11 +7,11 @@ import { Centralizer } from '../components/Centralizer';
 import {
   Events,
   Controllers,
-  Models 
+  Models
 } from '@olympusat/oly-client-sdk';
 
 const { UserController } = Controllers;
-const { AppsModel } = Models; 
+const { AppsModel } = Models;
 
 export function UIController(options) {
   const userController = new UserController(options);
@@ -22,9 +22,9 @@ export function UIController(options) {
  * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.
  */
   this.showCentralizer = () => {
-    let self = this,
-      wrapper = document.createElement("div"),
-      script = document.createElement('script');
+    let self = this;
+    let wrapper = document.createElement("div");
+    let script = document.createElement('script');
 
     wrapper.id = 'olyauth__centralizer';
     wrapper.style.position = 'absolute';
@@ -37,22 +37,16 @@ export function UIController(options) {
     document.body.appendChild(script);
     document.body.appendChild(wrapper);
 
-    // Get the user before we render anything
-    userController.getCurrentUser()
-      .then(user => {
-        user.profile = user.picture;// Map for Legacy
-        return appsModel.listActive()
-          .then(apps => {
-            const $injectElem = document.getElementById('olyauth__centralizer');
+    const $injectElem = document.getElementById('olyauth__centralizer');
+    if ($injectElem) {
+      // These exist because they are requested by the sdk on init
+      let user = window.Oly.meta.user;
+      const apps = window.Oly.meta.activeApps;
 
-            // console.log('SDK USer',user,apps);
-            if ($injectElem) {
-              ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
+      ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
 
-              events.onCentralizerShow({ user, apps });//HOOK
-            }
-          });
-      });
+      events.onCentralizerShow({ user, apps });//HOOK
+    }
   };
 
   this.hideCentralizer = () => {
