@@ -19,6 +19,8 @@ export class Centralizer extends Component{
         super(props); 
         
 		this.state = {
+      user:{},
+      apps:[],
 			interface: MAIN_MENU,
 			showContainer : false,
 			showAppContainer : false
@@ -32,9 +34,19 @@ export class Centralizer extends Component{
     
 //componentWillReceiveProps
 	componentWillMount(){
-		this.addStyleToHead(headerStyles);
-		this.setState({user:this.props.user});
-	}
+    this.addStyleToHead(headerStyles);
+		this.setState({
+      user:this.props.user,
+      apps: this.props.apps
+    });
+  }
+  
+  componentWillReceiveProps(nextState){
+    this.setState({
+      user:nextState.user,
+      apps: nextState.apps
+    });
+  }
 
 	/**
 	 * Handle gratar click to open Container
@@ -188,7 +200,7 @@ export class Centralizer extends Component{
 		}
 
 		if(this.state.showAppContainer && !options.hideAppCentralizer){
-			AppContainer = this.makeAppContainer(<MainMenu apps={this.props.apps} parentStyles={styles} user={user}> </MainMenu>,user);
+			AppContainer = this.makeAppContainer(<MainMenu apps={this.state.apps} parentStyles={styles} user={user}> </MainMenu>,user);
 		}
 
 		return (
