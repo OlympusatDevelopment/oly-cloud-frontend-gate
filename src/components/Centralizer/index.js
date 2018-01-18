@@ -205,10 +205,6 @@ export class Centralizer extends Component {
     const profileIsDefault = user.profile.indexOf('default_profile.jpg') > -1;
     const profileImg = profileIsDefault ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) : (<img style={styles.gravatar} src={user.profile} alt={user.name} />);
     const gravatarClassnames = profileIsDefault ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' : 'olyauth__centralizerGravatar';
-    console.log('PROPS', this.props);
-
-    //options.brandingColor #103463
-    // user.email // first letter
 
     return (
       <div className="olyauth__centralizer" id="olyauthCentralizer" style={styles.olyauth__centralizer}>
