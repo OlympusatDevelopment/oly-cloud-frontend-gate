@@ -4,13 +4,13 @@ import {
   utils
 } from '@olympusat/oly-client-sdk';
 
-const { 
-  GateController, 
-  UserController, 
+const {
+  GateController,
+  UserController,
   SessionController,
   PermissionsController,
   AuthController,
-} = Controllers; 
+} = Controllers;
 const pjson = require('../package.json');
 
 /** 
@@ -20,22 +20,26 @@ const pjson = require('../package.json');
  * @constructor
  */
 function Gate(options) {
-  document.addEventListener('olySdkInitDataReady', ()=>{
-    utils.options = options; 
-  
+  document.addEventListener('olySdkInitDataReady', () => {
+    utils.options = options;
+    console.log('OLY GATE', window.Oly, window.Oly.meta.user, window.Oly.Permissions.loggedIn());
     if (window.Oly) {
       // Merge our options into the sdk options
       window.Oly.options = Object.assign({}, window.Oly.options, options);
       window.Oly.UI = new UIController(options);
 
-      if(window.Oly.Permissions.loggedIn()){
-        window.Oly.UI.showCentralizer();
+      // If the parent event fired then we can assume we have logged in. It's safe to use the user object.
+      if (window.Oly.meta.user) {
+        window.Oly.UI.showCentralizer(
+          window.Oly.meta.user,
+          window.Oly.meta.activeApps
+        );
       }
-    } 
-  
+    }
+
     console.log(`${pjson.name} | version ${pjson.version}`);
   });
-} 
+}
 
 export {
   Gate

@@ -21,7 +21,7 @@ export function UIController(options) {
   /**
  * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.
  */
-  this.showCentralizer = () => {
+  this.showCentralizer = (user, apps) => {
     let self = this;
     let wrapper = document.createElement("div");
     let script = document.createElement('script');
@@ -39,13 +39,11 @@ export function UIController(options) {
 
     const $injectElem = document.getElementById('olyauth__centralizer');
     if ($injectElem) {
-      // These exist because they are requested by the sdk on init
-      let user = window.Oly.meta.user;
-      const apps = window.Oly.meta.activeApps;
+      if (user) {
+        ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
 
-      ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
-
-      events.onCentralizerShow({ user, apps });//HOOK
+        events.onCentralizerShow({ user, apps });//HOOK
+      }
     }
   };
 
