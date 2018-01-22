@@ -17,7 +17,7 @@ const pjson = require('../package.json');
  * Entry point for beginning the Gate behaviors & Auth flows
  * the config argument is the main configuration object passed to the instantitation
  * @param options
- * @constructor
+ * @constructor  
  */
 function Gate(options) {
   document.addEventListener('olySdkInitDataReady', () => {
