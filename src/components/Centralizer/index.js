@@ -118,7 +118,7 @@ export class Centralizer extends Component {
 	 * Make the primary user container
 	 * @param Interface
 	 * @param user
-	 * @returns {XML}
+	 * @returns {XML} 
 	 */
   makeContainer(Interface, user) {
     return (

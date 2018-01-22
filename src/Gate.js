@@ -19,7 +19,7 @@ const pjson = require('../package.json');
  * @param options
  * @constructor  
  */
-function Gate(options) {
+function Gate(options) { 
   document.addEventListener('olySdkInitDataReady', () => {
     utils.options = options;
 

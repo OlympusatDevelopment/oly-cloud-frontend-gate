@@ -25,7 +25,7 @@ export function UIController(options) {
     let self = this;
     let wrapper = document.createElement("div");
     let script = document.createElement('script');
- 
+
     wrapper.id = 'olyauth__centralizer';
     wrapper.style.position = 'absolute';
     wrapper.style.top = '0';
