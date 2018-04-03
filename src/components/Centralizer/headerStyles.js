@@ -14,7 +14,23 @@ export default `
 	.olyauth__centralizerAppsIcon:hover:after{
 		cursor: pointer !important;
 		opacity: 0.7;
-	}
+  }
+  .olyauth__centralizerGravatar--cssGravatar{
+    display: table;
+  }
+  .olyauth__centralizerGravatar--cssGravatar p{
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 100;
+    line-height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+  }
 
 	.olyauth__mainMenuInner ul li:hover{
 		background: #f7f7f7;
