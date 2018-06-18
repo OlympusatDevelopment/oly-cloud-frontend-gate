@@ -1,6 +1,5 @@
 import { 
-  OPTIONS_LS_KEY,
-  INTERFACE_MESSAGE
+  OPTIONS_LS_KEY
 } from './constants';
 import * as constants from './constants';
 
