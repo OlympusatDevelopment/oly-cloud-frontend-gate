@@ -4,15 +4,13 @@ import headerStyles from './headerStyles';
 import { UserDetails } from './UserDetails';
 import { MainMenu } from './MainMenu';
 import { ProfileUpload } from './ProfileUpload';
-import { Events, utils } from '@olympusat/oly-client-sdk';
+import { utils } from '@olympusat/oly-client-sdk';
 
 const {
     MAIN_MENU,
   USER_DETAILS,
   PROFILE_UPLOAD
 } = utils.constants;
-
-const events = new Events();
 
 export class Centralizer extends Component {
   constructor(props) {
@@ -54,12 +52,6 @@ export class Centralizer extends Component {
   toggleContainer() {
     const showing = !this.state.showContainer;
     this.setState({ showContainer: showing, showAppContainer: false });
-
-    if (showing) {
-      events.onCentralizerUserOpen(this.state);//HOOK
-    } else {
-      events.onCentralizerUserClose(this.state);//HOOK
-    }
   }
 
 	/**
@@ -68,13 +60,6 @@ export class Centralizer extends Component {
   toggleAppContainer() {
     const showing = !this.state.showAppContainer;
     this.setState({ showAppContainer: showing, showContainer: false });
-
-    if (showing) {
-      events.onCentralizerAppsOpen(this.state);//HOOK
-    } else {
-      events.onCentralizerAppsClose(this.state);//HOOK 
-    }
-
   }
 
 	/**

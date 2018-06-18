@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
 import {
-  Events,
   Controllers,
   Models
 } from '@olympusat/oly-client-sdk';
@@ -16,7 +15,6 @@ const { AppsModel } = Models;
 export function UIController(options) {
   const userController = new UserController(options);
   const appsModel = new AppsModel(options);
-  const events = new Events(options);
 
   /**
  * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.
@@ -41,8 +39,6 @@ export function UIController(options) {
     if ($injectElem) {
       if (user) {
         ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
-
-        events.onCentralizerShow({ user, apps });//HOOK
       }
     }
   };
@@ -52,8 +48,6 @@ export function UIController(options) {
 
     if ($injectElem) {
       document.body.removeChild($injectElem);
-
-      events.onCentralizerHide(true);//HOOK 
     }
   };
 
