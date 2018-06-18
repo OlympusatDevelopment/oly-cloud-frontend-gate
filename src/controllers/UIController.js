@@ -4,17 +4,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
-import {
-  Controllers,
-  Models
-} from '@olympusat/oly-client-sdk';
-
-const { UserController } = Controllers;
-const { AppsModel } = Models;
 
 export function UIController(options) {
-  const userController = new UserController(options);
-  const appsModel = new AppsModel(options);
 
   /**
  * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.

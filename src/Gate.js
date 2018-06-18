@@ -1,17 +1,5 @@
 import { UIController } from './controllers/UIController';
-import {
-  Controllers,
-  utils
-} from '@olympusat/oly-client-sdk';
-
-const {
-  GateController,
-  UserController,
-  SessionController,
-  PermissionsController,
-  AuthController,
-} = Controllers;
-const pjson = require('../package.json');
+import { utils } from '@olympusat/oly-client-sdk';
 
 /** 
  * Entry point for beginning the Gate behaviors & Auth flows
@@ -21,7 +9,7 @@ const pjson = require('../package.json');
  */
 function Gate(options) { 
   document.addEventListener('olySdkInitDataReady', () => {
-    utils.options = options; 
+    utils.options = options; //sdk Options
 
     if (window.Oly) {
       // Merge our options into the sdk options
@@ -38,6 +26,8 @@ function Gate(options) {
     }
 
     if (window.Oly && window.Oly.debugMode) {
+      const pjson = require('../package.json');
+      
       console.log(`${pjson.name} | version ${pjson.version}`);
     }
   });
