@@ -125,7 +125,11 @@ export class Centralizer extends Component {
           <button className="fa fa-cog" style={styles.buttonIcon} >
             <a style={styles.profileAnchor} href={this.props.options.profileSettingsLink}></a>
           </button>
-          <div style={styles.branding} ><img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} /></div>
+            <div style={styles.branding} >
+              {utils.options.logo &&
+                (<img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} />)
+              }
+            </div>
           <button style={styles.buttonSignout} onClick={this.signOut.bind(this)}>Sign out</button>
         </div>
       </div>
