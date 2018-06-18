@@ -13,7 +13,7 @@ function Gate(options) {
 
     if (window.Oly) {
       // Merge our options into the sdk options
-      window.Oly.options = Object.assign({}, window.Oly.options, options);
+      window.Oly.options.ui = options;
       window.Oly.UI = new UIController(options);
 
       // If the parent event fired then we can assume we have logged in. It's safe to use the user object.

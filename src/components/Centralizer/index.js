@@ -4,10 +4,10 @@ import headerStyles from './headerStyles';
 import { UserDetails } from './UserDetails';
 import { MainMenu } from './MainMenu';
 import { ProfileUpload } from './ProfileUpload';
-import { utils } from '@olympusat/oly-client-sdk';
+import utils from '../../utils';
 
 const {
-    MAIN_MENU,
+  MAIN_MENU,
   USER_DETAILS,
   PROFILE_UPLOAD
 } = utils.constants;
@@ -126,8 +126,8 @@ export class Centralizer extends Component {
             <a style={styles.profileAnchor} href={this.props.options.profileSettingsLink}></a>
           </button>
             <div style={styles.branding} >
-              {utils.options.logo &&
-                (<img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} />)
+              {window.Oly.options.ui.logo &&
+                (<img style={styles.logo} src={window.Oly.options.ui.logo} alt={window.Oly.options.ui.appSlug} />)
               }
             </div>
           <button style={styles.buttonSignout} onClick={this.signOut.bind(this)}>Sign out</button>
@@ -149,7 +149,7 @@ export class Centralizer extends Component {
           {Interface}
         </div>
         <div className="olyauth__centralizerFooter" style={styles.footer}>
-          <div style={styles.branding} ><img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} /></div>
+          <div style={styles.branding} ><img style={styles.logo} src={window.Oly.options.ui.logo} alt={window.Oly.options.ui.appSlug} /></div>
         </div>
       </div>
     )

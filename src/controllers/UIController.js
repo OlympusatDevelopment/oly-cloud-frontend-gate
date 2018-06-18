@@ -6,9 +6,9 @@ import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
 
 export function UIController(options) {
-
+  
   /**
- * Centralizer is the user avatar and decentralized app centralizer that get put in the top corner of the user's screen.
+ * Centralizer is the user avatar and app centralizer that get put in the top corner of the user's screen.
  */
   this.showCentralizer = (user, apps) => {
     let self = this;
