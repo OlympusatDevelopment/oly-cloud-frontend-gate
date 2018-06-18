@@ -21,7 +21,7 @@ const pjson = require('../package.json');
  */
 function Gate(options) { 
   document.addEventListener('olySdkInitDataReady', () => {
-    utils.options = options;
+    utils.options = options; 
 
     if (window.Oly) {
       // Merge our options into the sdk options

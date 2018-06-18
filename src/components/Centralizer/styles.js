@@ -145,8 +145,9 @@ export default {
     bottom: '13px'
   },
   logo: {
-    width: '90px',
-    margin: '0 auto',
+    // width: '90px',
+    maxHeight: '33px',
+    margin: '-6px auto',
     display: 'block',
     filter: 'grayscale(100%)',
     opacity: '0.6'

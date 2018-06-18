@@ -8,12 +8,7 @@ let options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || (window.Oly ? 
 
 export default {
   constants,
-  options: undefined,
-  OlyAuthMeta: {
-    logo: options ? options.logo : '',
-    brandingColor: options ? options.brandingColor : '',
-    title: options ? options.title : ''
-  },
+  options,
 
   form: {
     diffPasswords(p1, p2) {

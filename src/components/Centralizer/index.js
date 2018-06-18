@@ -60,7 +60,7 @@ export class Centralizer extends Component {
   toggleAppContainer() {
     const showing = !this.state.showAppContainer;
     this.setState({ showAppContainer: showing, showContainer: false });
-  }
+  } 
 
 	/**
 	 * Toggle the user settings view
@@ -125,7 +125,7 @@ export class Centralizer extends Component {
           <button className="fa fa-cog" style={styles.buttonIcon} >
             <a style={styles.profileAnchor} href={this.props.options.profileSettingsLink}></a>
           </button>
-          <div style={styles.branding} ><img style={styles.logo} src={utils.OlyAuthMeta.logo} alt={utils.OlyAuthMeta.title} /></div>
+          <div style={styles.branding} ><img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} /></div>
           <button style={styles.buttonSignout} onClick={this.signOut.bind(this)}>Sign out</button>
         </div>
       </div>
@@ -145,7 +145,7 @@ export class Centralizer extends Component {
           {Interface}
         </div>
         <div className="olyauth__centralizerFooter" style={styles.footer}>
-          <div style={styles.branding} ><img style={styles.logo} src={utils.OlyAuthMeta.logo} alt={utils.OlyAuthMeta.title} /></div>
+          <div style={styles.branding} ><img style={styles.logo} src={utils.options.logo} alt={utils.options.appSlug} /></div>
         </div>
       </div>
     )
