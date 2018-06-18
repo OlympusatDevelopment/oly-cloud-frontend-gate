@@ -37,7 +37,9 @@ function Gate(options) {
       }
     }
 
-    console.log(`${pjson.name} | version ${pjson.version}`);
+    if (window.Oly && window.Oly.debugMode) {
+      console.log(`${pjson.name} | version ${pjson.version}`);
+    }
   });
 }
 
