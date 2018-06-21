@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { default as styles } from './styles';
 
-export class UserDetails extends Component {
+export class RoleSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +15,8 @@ export class UserDetails extends Component {
 
   render() {
     return (
-      <div className="olyauth__userDetails" style={styles.olyauth__userDetails}>
-        <div className="olyauth__userDetailsInner" style={styles.olyauth__userDetailsInner}></div>
+      <div className="olyauth__roleSelector" style={styles.olyauth__roleSelector}>
+        <div className="olyauth__roleSelectorInner" style={styles.olyauth__roleSelectorInner}></div>
       </div>
     )
   }

@@ -1,110 +1,48 @@
 import React, { Component } from 'react';
 import { default as styles } from './styles';
 import headerStyles from './headerStyles';
-import { UserDetails } from './UserDetails';
 import { AppMenu } from './AppMenu';
-import { ProfileUpload } from './ProfileUpload';
+import { RoleSelector } from '../RoleSelector';
 import utils from '../../utils';
 
 const {
-  MAIN_MENU,
-  USER_DETAILS,
-  PROFILE_UPLOAD
+  APP_MENU,
+  CENTRALIZER_ID
 } = utils.constants;
 
 export class Centralizer extends Component {
   constructor(props) {
     super(props);
 
+    this._addStyleToHead(headerStyles);
+
     this.state = {
-      user: {},
-      apps: [],
-      interface: MAIN_MENU,
+      user: this.props.user || [],
+      apps: this.props.apps || [],
+      roles: this.props.roles || [],
+      interface: APP_MENU,
       showContainer: false,
       showAppContainer: false
     }
 
-    this.toggleContainer = this.toggleContainer.bind(this);
-    this.toggleAppContainer = this.toggleAppContainer.bind(this);
-    this.toggleUserDetails = this.toggleUserDetails.bind(this);
-    this.toggleProfileUpload = this.toggleProfileUpload.bind(this);
-  }
-
-  //componentWillReceiveProps
-  componentWillMount() {
-    this.addStyleToHead(headerStyles);
-    this.setState({
-      user: this.props.user,
-      apps: this.props.apps
-    });
+    this.setVisibleInterface = this.setVisibleInterface.bind(this);
   }
 
   componentWillReceiveProps(nextState) {
     this.setState({
       user: nextState.user,
-      apps: nextState.apps
+      apps: nextState.apps,
+      roles: nextState.roles
     });
-  }
-
-	/**
-	 * Handle gratar click to open Container
-	 */
-  toggleContainer() {
-    const showing = !this.state.showContainer;
-    this.setState({ showContainer: showing, showAppContainer: false });
-  }
-
-	/**
-	 * Toggles the app container
-	 */
-  toggleAppContainer() {
-    const showing = !this.state.showAppContainer;
-    this.setState({ showAppContainer: showing, showContainer: false });
   } 
 
 	/**
-	 * Toggle the user settings view
-	 */
-  toggleUserDetails() {
-    this.setState({ interface: this.state.interface !== USER_DETAILS ? USER_DETAILS : MAIN_MENU });
-  }
-
-	/**
-	 * Handle profile upload interface
-	 */
-  toggleProfileUpload() {
-    this.setState({ interface: this.state.interface !== PROFILE_UPLOAD ? PROFILE_UPLOAD : MAIN_MENU });
-  }
-
-  signOut() {
-    window.Oly.Services.Auth.logout();
-    window.location.href = '/';
-  }
-
-	/**
-	 * Handles the profile image file upload from the ProfileUpload component
-	 * @param e
-	 */
-  onFileUploadSubmit(e) {
-    e.preventDefault();
-    const self = this,
-      files = document.getElementById('olyauth.file').files;
-
-    //Users.User.uploadProfileImage({email:this.state.user.email,files})
-    //	.then(user=>{
-    //		l(this.state.user,user);
-    //		this.setState({user});
-    //		this.toggleProfileUpload();
-    //	});
-  }
-
-	/**
-	 * Make the primary user container
+	 * BUILD the primary container
 	 * @param Interface
 	 * @param user
 	 * @returns {XML} 
 	 */
-  makeContainer(Interface, user) {
+  makePrimaryContainer(Interface, user) {
     return (
       <div style={styles.container} className="olyauth__centralizerContainer top_arr">
         <div className="olyauth__centralizerHeader" style={styles.header}>
@@ -113,13 +51,15 @@ export class Centralizer extends Component {
             <br />
             {user.company || user.email}
           </p>
-          <div style={styles.headerGravatar} className="olyauth__centralizerHeaderGravatar" onClick={this.toggleUserDetails.bind(this)}>
+          <div style={styles.headerGravatar} className="olyauth__centralizerHeaderGravatar">
             <img style={styles.headerGravatarImg} src={user.profile} alt={user.name} />
           </div>
         </div>
-        <div >
+
+        <div>
           {Interface}
         </div>
+
         <div className="olyauth__centralizerFooter" style={styles.footer}>
           <button className="fa fa-cog" style={styles.buttonIcon} >
             <a style={styles.profileAnchor} href={this.props.options.profileSettingsLink}></a>
@@ -129,14 +69,14 @@ export class Centralizer extends Component {
                 (<img style={styles.logo} src={window.Oly.options.ui.logo} alt={window.Oly.options.ui.appSlug} />)
               }
             </div>
-          <button style={styles.buttonSignout} onClick={this.signOut.bind(this)}>Sign out</button>
+          <button style={styles.buttonSignout} onClick={window.Oly.Services.Auth.logout()}>Sign out</button>
         </div>
       </div>
     )
   }
 
 	/**
-	 * Makes the app container
+	 * BUILD the app container
 	 * @param Interface
 	 * @param user
 	 * @returns {XML}
@@ -154,51 +94,50 @@ export class Centralizer extends Component {
     )
   }
 
-  render() {
-    const self = this,
-      { options } = this.props,
-      user = this.state.user;
-    let Container = '',
-      AppCentralizer = (<div className="olyauth__centralizerAppsIcon" style={styles.apps} onClick={this.toggleAppContainer.bind(this)}></div>),
-      AppContainer = '',
-      Interface = '';
+  /**
+   * The centralizer has the ability to swap out internal interfaces. 
+   * The default interface is the roles menu, but others can be displayed if needed.
+   * CONTROLS internal interface switching
+   * @param {*} nterface 
+   */
+  setVisibleInterface(nterface){
+    const {roles} = this.state;
+
+    switch (nterface) {
+      default:
+        return (<RoleSelector roles={roles}/>);
+    }
+  }
+
+  render() { 
+    const self = this
+    const { options } = this.props; 
+    const user = this.state.user;
+    let AppCentralizer = options.hideAppCentralizer 
+      ? '' 
+      : (<div className="olyauth__centralizerAppsIcon" style={styles.apps} onClick={this.setState({ showAppContainer: !this.state.showAppContainer, showContainer: false })}></div>);
+    let Interface = this.setVisibleInterface(this.state.interface);
+    let Container = this.state.showContainer 
+      ? this.makePrimaryContainer(Interface, user) 
+      : '';
+    let AppContainer = (this.state.showAppContainer && !options.hideAppCentralizer) 
+      ? this.makeAppContainer(<AppMenu apps={this.state.apps} parentStyles={styles} user={user}> </AppMenu>, user) 
+      : '';
+    const profileIsDefault = user.profile.indexOf('default_profile.jpg') > -1;
+    const profileImg = profileIsDefault 
+      ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
+      : (<img style={styles.gravatar} src={user.profile} alt={user.name} />);
+    const gravatarClassnames = profileIsDefault 
+      ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' 
+      : 'olyauth__centralizerGravatar';
 
     user.name = `${user.given_name ? user.given_name : ''} ${user.family_name ? user.family_name : ''}`;
 
-    switch (this.state.interface) {
-      case PROFILE_UPLOAD:
-        Interface = <ProfileUpload parentStyles={styles} user={user} onFileUploadSubmit={this.onFileUploadSubmit.bind(this)}></ProfileUpload>;
-        break;
-      case USER_DETAILS:
-      default:
-        Interface = <UserDetails parentStyles={styles} user={user} options={options}> </UserDetails>;
-        break;
-    }
-
-    // Setting to hide the app icon for apps that don't need it
-    if (options.hideAppCentralizer) {
-      AppCentralizer = '';
-    }
-
-		/**
-		 * Toggle the interface containers
-		 */
-    if (this.state.showContainer) {
-      Container = this.makeContainer(Interface, user);
-    }
-
-    if (this.state.showAppContainer && !options.hideAppCentralizer) {
-      AppContainer = this.makeAppContainer(<AppMenu apps={this.state.apps} parentStyles={styles} user={user}> </AppMenu>, user);
-    }
-    const profileIsDefault = user.profile.indexOf('default_profile.jpg') > -1;
-    const profileImg = profileIsDefault ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) : (<img style={styles.gravatar} src={user.profile} alt={user.name} />);
-    const gravatarClassnames = profileIsDefault ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' : 'olyauth__centralizerGravatar';
-
     return (
-      <div className="olyauth__centralizer" id="olyauthCentralizer" style={styles.olyauth__centralizer}>
+      <div className={CENTRALIZER_ID} id="olyauthCentralizer" style={styles.olyauth__centralizer}>
         <div className="olyauth__centralizerInner" style={styles.olyauth__centralizerInner}>
           {AppCentralizer}
-          <div className={gravatarClassnames} style={styles.entry} onClick={this.toggleContainer.bind(this)}>
+          <div className={gravatarClassnames} style={styles.entry} onClick={this.setState({ showContainer: !this.state.showContainer, showAppContainer: false })}>
             {profileImg}
           </div>
           {Container}
@@ -208,12 +147,9 @@ export class Centralizer extends Component {
     )
   }
 
-	/**
-	 * Takes the contents of the headStyles fn and appends to the head in a style tag
-	 */
-  addStyleToHead(css) {
-    var head = document.head || document.getElementsByTagName('head')[0],
-      style = document.createElement('style');
+  _addStyleToHead(css) {
+    const head = document.head || document.getElementsByTagName('head')[0];
+    const style = document.createElement('style');
 
     style.type = 'text/css';
     if (style.styleSheet) {

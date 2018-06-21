@@ -1,5 +1,5 @@
-import { Gate } from './Gate';
+import Gate from './Gate';
 
-export default{ 
-    Gate
+export default { 
+    Gate 
 };

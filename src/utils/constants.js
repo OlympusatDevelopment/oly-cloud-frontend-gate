@@ -1,5 +1,5 @@
 
-export const MAIN_MENU= 'main_menu';
-export const USER_DETAILS = 'user_details';
-export const PROFILE_UPLOAD = 'profile_upload';
+export const APP_MENU= 'app_menu';
 export const OPTIONS_LS_KEY = 'olyauth.client';
+
+export const CENTRALIZER_ID = 'olyauth__centralizer';

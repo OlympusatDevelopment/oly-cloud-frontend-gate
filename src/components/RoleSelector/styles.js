@@ -13,11 +13,11 @@ const color = {
 
 export default{
 	color,
-	olyauth__userDetails : {
+	olyauth__roleSelector : {
 
 	},
 
-	olyauth__userDetailsInner : {
+	olyauth__roleSelectorInner : {
 
 	}
 }
