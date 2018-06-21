@@ -15,7 +15,7 @@ const dummy = {
       "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
       "name": "Olympusat"
     },
-    "profileImage": "resources/users/adam@olympusat.com/paki.png",
+    "profileImage": "https://assets-prod.oly.cloud/resources/users/adam@olympusat.com/paki.png",
     "roles": [],
     "groups": [
       {
@@ -58,10 +58,10 @@ const dummy = {
       "id": "1918987a-5603-4527-82b5-24bdd864c1ec",
       "name": "OLYHUB",
       "slug": "olyhub",
-      "googleUaId": null,
+      "googleUaId": null, 
       "description": "The primary Olyhub app for buying/selling content",
       "domain": "https://stage.olyhub.tv",
-      "logo": "resources/apps/olyhub/olyhub_logo_v1_blackx120.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/olyhub/olyhub_logo_v1_blackx120.png",
       "secret": null,
       "isActive": true
     },
@@ -72,7 +72,7 @@ const dummy = {
       "googleUaId": null,
       "description": "The primary accounts application entity used for platform wide account policy permission provisioning.",
       "domain": "https://account.olyhub.tv",
-      "logo": "resources/apps/accounts/circlecompass.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/accounts/circlecompass.png",
       "secret": null,
       "isActive": true
     },
@@ -83,7 +83,7 @@ const dummy = {
       "googleUaId": null,
       "description": null,
       "domain": "http://catalog.olyhub.tv",
-      "logo": "resources/apps/default_logo.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/default_logo.png",
       "secret": null,
       "isActive": false
     },
@@ -94,7 +94,7 @@ const dummy = {
       "googleUaId": "UA-82580319-1",
       "description": "The Olympusat Portal",
       "domain": "http://portal.olympusat.tech",
-      "logo": "resources/apps/portal/news.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/portal/news.png",
       "secret": null,
       "isActive": true
     },
@@ -105,40 +105,7 @@ const dummy = {
       "googleUaId": "UA-101546919-1",
       "description": "CloudPlat management app",
       "domain": "https://admin.oly.cloud",
-      "logo": "resources/apps/cloudplat-management/briefcase.png",
-      "secret": null,
-      "isActive": true
-    },
-    {
-      "id": "64a8a64e-35d0-46d7-a9e5-cd0dd1f109c1",
-      "name": "SAMPLE OF SAMPLES",
-      "slug": "sample-of-samples",
-      "googleUaId": null,
-      "description": "testy mc testy test",
-      "domain": "http://www.de.rp",
-      "logo": "http://www.de.rp/lo.ggo",
-      "secret": null,
-      "isActive": true
-    },
-    {
-      "id": "83cce79b-d13d-4423-94e2-5f713f562205",
-      "name": "DERPERY UPDATEDDDDDDD",
-      "slug": "derp",
-      "googleUaId": null,
-      "description": null,
-      "domain": "http://domaindomain.com",
-      "logo": null,
-      "secret": null,
-      "isActive": true
-    },
-    {
-      "id": "92d5042b-a3b4-4e3f-92a9-01e597f517f6",
-      "name": "SAMPLE",
-      "slug": "sample",
-      "googleUaId": null,
-      "description": "Sample created app",
-      "domain": "http://sample.com",
-      "logo": null,
+      "logo": "https://assets-prod.oly.cloud/resources/apps/cloudplat-management/briefcase.png",
       "secret": null,
       "isActive": true
     },
@@ -149,7 +116,7 @@ const dummy = {
       "googleUaId": null,
       "description": "Reports app",
       "domain": "http://analytics.oly.cloud",
-      "logo": "resources/apps/reports/magnifyingglass.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/reports/magnifyingglass.png",
       "secret": null,
       "isActive": true
     },
@@ -160,7 +127,7 @@ const dummy = {
       "googleUaId": null,
       "description": "Olympusat cloud-based distribution app",
       "domain": "https://distribution.olympusat.tech",
-      "logo": "resources/apps/distribution/tv.png",
+      "logo": "https://assets-prod.oly.cloud/resources/apps/distribution/tv.png",
       "secret": null,
       "isActive": true
     }
@@ -171,7 +138,8 @@ const dummy = {
       "name": "Testy mc test role",
       "organization": {
         "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
-        "name": "Olympusat"
+        "name": "Olympusat",
+        "logo": "https://assets-prod.oly.cloud/resources/apps/reports/magnifyingglass.png"
       },
       "defaultGroup": null,
       "groups": [
@@ -187,7 +155,8 @@ const dummy = {
       "name": "Buyer Dummy",
       "organization": {
         "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
-        "name": "Olympusat"
+        "name": "Fake Co.",
+        "logo": "https://assets-prod.oly.cloud/resources/apps/distribution/tv.png",
       },
       "defaultGroup": null,
       "groups": [

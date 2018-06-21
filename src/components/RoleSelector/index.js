@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { default as styles } from './styles';
+import styles from './styles';
+import { RoleItem } from '../RoleItem';
 
 export class RoleSelector extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {}
-    }
-  }
 
-  componentWillReceiveProps() {
-    this.setState({ user: this.props.user });
+  onItemClick(){
+    // assumeRole logic here
   }
 
   render() {
+    const { roles } = this.props
     return (
       <div className="olyauth__roleSelector" style={styles.olyauth__roleSelector}>
-        <div className="olyauth__roleSelectorInner" style={styles.olyauth__roleSelectorInner}></div>
+        <div className="olyauth__roleSelectorInner" style={styles.olyauth__roleSelectorInner}>
+        <ul style={styles.ul}>
+          { roles.map(role => (<RoleItem key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
+        </ul>
+        </div>
       </div>
     )
   }

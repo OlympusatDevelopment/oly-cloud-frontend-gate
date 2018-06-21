@@ -39,43 +39,6 @@ export default `
 		border-radius: 3px;
 	}
 
-	.olyauth__centralizerHeaderGravatar:hover:after{
-		content:"\\f030";
-		font-family:FontAwesome;
-		color: #fff;
-		background: rgba(0,0,0,0.6);
-		top: 9px;
-		right: 9px;
-		width: 51px;
-		height: 51px;
-		border-radius: 50%;
-		text-align: center;
-		padding-top: 19px;
-		box-sizing: border-box;
-		position: absolute;
-		cursor:pointer;
-	}
-
-	.olyauth__profileUploadInner:after{
-		content:"\\f0ee";
-		font-family:FontAwesome;
-		color: #9c9c9c;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		font-size: 36px;
-		border-radius: 0;
-		background: none;
-		padding-top: 50%;
-		box-sizing: border-box;
-		pointer-events: none;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		text-align: center;
-	}
-
 	.olyauth__centralizerAppsIcon:after{
 		content:"\\f00a";
 		font-family:FontAwesome;

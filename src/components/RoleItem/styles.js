@@ -13,16 +13,17 @@ const color = {
 
 export default{
 	color,
-	olyauth__roleSelector : {
-
-	},
-
-	olyauth__roleSelectorInner : {
-    minHeight: '200px',
-    background: color.offWhite
+	li: {
+    display: 'block',
+    padding: '18px 18px 18px 0',
+    listStyleType: 'none',
+    cursor: 'pointer',
+    overflow: 'hidden'
   },
-  
-  ul: { 
-    margin: 0
+  column: {
+    float: 'left'
+  },
+  img: {
+    maxHeight: '45px'
   }
 }

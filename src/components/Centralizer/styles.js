@@ -66,34 +66,6 @@ export default {
     maxWidth: 'auto',
     height: "100%"
   },
-  header: {
-    background: color.header,
-    padding: '0 9px 9px',
-    overflow: 'hidden',
-    borderBottom: `1px solid ${color.border}`,
-  },
-  headerText: {
-    display: 'inline-block'
-  },
-  headerName: {
-    fontSize: '16px',
-    marginTop: '3px'
-  },
-  headerGravatar: {
-    display: 'inline-block',
-    textAlign: 'right',
-    width: '51px',
-    height: '51px',
-    borderRadius: '50%',
-    overflow: 'hidden',
-    float: 'right',
-    marginTop: '9px'
-  },
-  headerGravatarImg: {
-    textAlign: 'center',
-    maxWidth: 'auto',
-    height: "100%"
-  },
   container: {
     position: 'relative',
     top: '54px',
@@ -114,44 +86,11 @@ export default {
     borderRadius: '3px',
     boxShadow: '0 0 1em rgba(0,0,0,0.1)',
   },
-  footer: {
-    background: color.footer,
-    padding: '9px',
-    overflow: 'hidden',
-    height: '45px'
-  },
   button,
   buttonIcon: Object.assign({}, button, {
     color: color.icon,
     float: 'left'
   }),
-  buttonSignout: Object.assign({}, button, {
-    float: 'right'
-  }),
-  profileAnchor: {
-    width: '100px',
-    height: '100%',
-    position: 'absolute',
-    left: '0',
-    right: '0',
-    top: '0',
-    bottom: '0'
-  },
-  branding: {
-    display: 'block',
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    bottom: '13px'
-  },
-  logo: {
-    // width: '90px',
-    maxHeight: '33px',
-    margin: '-6px auto',
-    display: 'block',
-    filter: 'grayscale(100%)',
-    opacity: '0.6'
-  },
   form: {
     form: {
       padding: '18px 18px 51px'

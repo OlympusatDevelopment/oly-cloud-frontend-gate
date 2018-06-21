@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import { default as styles } from './styles';
+import styles from './styles';
 
 export class AppMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      apps: []  
-    }
-  }
-
   render() {
-    const self = this,
-      profile = this.props.user,
-      parentStyles = this.props.parentStyles,
-      apps = this.props.apps;
+    const { apps } = this.props;
 
     return (
       <div className="olyauth__mainMenu" style={styles.olyauth__mainMenu}>
@@ -21,10 +11,10 @@ export class AppMenu extends Component {
           <ul style={styles.ul}>
             {apps.map(app => {
               return (
-                <li key={app.entityUUID} style={styles.li}>
-                  <a style={styles.link} href={app.appDomain} >
-                    <img style={styles.icon} src={app.appLogo} />
-                    {app.appName}
+                <li key={Math.random()} style={styles.li}>
+                  <a style={styles.link} href={app.domain} >
+                    <img style={styles.icon} src={app.logo} />
+                    {app.name}
                   </a>
                 </li>
               );
