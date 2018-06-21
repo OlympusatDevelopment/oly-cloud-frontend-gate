@@ -52,7 +52,7 @@ export class Centralizer extends Component {
             {user.company || user.email}
           </p>
           <div style={styles.headerGravatar} className="olyauth__centralizerHeaderGravatar">
-            <img style={styles.headerGravatarImg} src={user.profile} alt={user.name} />
+            <img style={styles.headerGravatarImg} src={user.profileImage} alt={user.name} />
           </div>
         </div>
 
@@ -69,7 +69,7 @@ export class Centralizer extends Component {
                 (<img style={styles.logo} src={window.Oly.options.ui.logo} alt={window.Oly.options.ui.appSlug} />)
               }
             </div>
-          <button style={styles.buttonSignout} onClick={window.Oly.Services.Auth.logout()}>Sign out</button>
+          <button style={styles.buttonSignout} onClick={() => window.Oly.Services.Auth.logout()}>Sign out</button>
         </div>
       </div>
     )
@@ -115,7 +115,7 @@ export class Centralizer extends Component {
     const user = this.state.user;
     let AppCentralizer = options.hideAppCentralizer 
       ? '' 
-      : (<div className="olyauth__centralizerAppsIcon" style={styles.apps} onClick={this.setState({ showAppContainer: !this.state.showAppContainer, showContainer: false })}></div>);
+      : (<div className="olyauth__centralizerAppsIcon" style={styles.apps} onClick={() => this.setState({ showAppContainer: !this.state.showAppContainer, showContainer: false })}></div>);
     let Interface = this.setVisibleInterface(this.state.interface);
     let Container = this.state.showContainer 
       ? this.makePrimaryContainer(Interface, user) 
@@ -123,10 +123,10 @@ export class Centralizer extends Component {
     let AppContainer = (this.state.showAppContainer && !options.hideAppCentralizer) 
       ? this.makeAppContainer(<AppMenu apps={this.state.apps} parentStyles={styles} user={user}> </AppMenu>, user) 
       : '';
-    const profileIsDefault = user.profile.indexOf('default_profile.jpg') > -1;
+    const profileIsDefault = user.profileImage.indexOf('default_profile.jpg') > -1;
     const profileImg = profileIsDefault 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
-      : (<img style={styles.gravatar} src={user.profile} alt={user.name} />);
+      : (<img style={styles.gravatar} src={user.profileImage} alt={user.name} />);
     const gravatarClassnames = profileIsDefault 
       ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' 
       : 'olyauth__centralizerGravatar';
@@ -137,7 +137,7 @@ export class Centralizer extends Component {
       <div className={CENTRALIZER_ID} id="olyauthCentralizer" style={styles.olyauth__centralizer}>
         <div className="olyauth__centralizerInner" style={styles.olyauth__centralizerInner}>
           {AppCentralizer}
-          <div className={gravatarClassnames} style={styles.entry} onClick={this.setState({ showContainer: !this.state.showContainer, showAppContainer: false })}>
+          <div className={gravatarClassnames} style={styles.entry} onClick={() => this.setState({ showContainer: !this.state.showContainer, showAppContainer: false })}>
             {profileImg}
           </div>
           {Container}
