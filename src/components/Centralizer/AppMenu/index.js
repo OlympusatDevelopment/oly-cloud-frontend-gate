@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { default as styles } from './styles';
 
-export class MainMenu extends Component {
+export class AppMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {

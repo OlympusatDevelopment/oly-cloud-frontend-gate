@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { default as styles } from './styles';
 import headerStyles from './headerStyles';
 import { UserDetails } from './UserDetails';
-import { MainMenu } from './MainMenu';
+import { AppMenu } from './AppMenu';
 import { ProfileUpload } from './ProfileUpload';
 import utils from '../../utils';
 
@@ -77,8 +77,7 @@ export class Centralizer extends Component {
   }
 
   signOut() {
-    // window.Oly.Auth.logout();
-    window.Oly.Auth0.logout();
+    window.Oly.Services.Auth.logout();
     window.location.href = '/';
   }
 
@@ -189,7 +188,7 @@ export class Centralizer extends Component {
     }
 
     if (this.state.showAppContainer && !options.hideAppCentralizer) {
-      AppContainer = this.makeAppContainer(<MainMenu apps={this.state.apps} parentStyles={styles} user={user}> </MainMenu>, user);
+      AppContainer = this.makeAppContainer(<AppMenu apps={this.state.apps} parentStyles={styles} user={user}> </AppMenu>, user);
     }
     const profileIsDefault = user.profile.indexOf('default_profile.jpg') > -1;
     const profileImg = profileIsDefault ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) : (<img style={styles.gravatar} src={user.profile} alt={user.name} />);

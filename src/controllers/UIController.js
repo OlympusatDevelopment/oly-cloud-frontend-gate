@@ -1,16 +1,20 @@
-/**
- * Handles interfacing with UI functionality ie. show/hide gate & centralizer
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from '../components/Centralizer';
 
-export function UIController(options) {
-  
-  /**
- * Centralizer is the user avatar and app centralizer that get put in the top corner of the user's screen.
+/**
+ * CONTROLS interfacing with UI functionality ie. show/hide centralizer
  */
-  this.showCentralizer = (user, apps) => {
+export class UIController{
+  constructor(options){
+    this.options = options;
+  }
+
+  /**
+  * CREATES an instance of the centralizer
+  * Centralizer is the user avatar and app centralizer that get put in the top corner of the user's screen.
+  */
+  showCentralizer(user, roles, apps){
     let self = this;
     let wrapper = document.createElement("div");
     let script = document.createElement('script');
@@ -26,24 +30,22 @@ export function UIController(options) {
     document.body.appendChild(script);
     document.body.appendChild(wrapper);
 
+    // Get the wrapper we just placed on the DOM
     const $injectElem = document.getElementById('olyauth__centralizer');
-    if ($injectElem) {
-      if (user) {
-        ReactDOM.render(<Centralizer user={user} apps={apps} options={options} />, $injectElem);
-      }
-    }
-  };
 
-  this.hideCentralizer = () => {
+    if ($injectElem && user) {
+      ReactDOM.render(<Centralizer user={user} apps={apps} roles={roles} options={this.options} />, $injectElem);
+    }
+  }
+
+  /**
+  * HOOK for destroying the centralizer.
+  */
+  hideCentralizer(){
     const $injectElem = document.getElementById('olyauth__centralizer');
 
     if ($injectElem) {
       document.body.removeChild($injectElem);
     }
-  };
-
-  return {
-    showCentralizer: this.showCentralizer,
-    hideCentralizer: this.hideCentralizer
   }
 }
