@@ -97,7 +97,7 @@ export class Centralizer extends Component {
       <div className={CENTRALIZER_ID} id="olyauthCentralizer">
         <div className="olyauth__centralizerInner">
           {!options.hideAppCentralizer 
-            && (<div className="olyauth__centralizerAppsIcon" onClick={() => this.setState({ showAppContainer: !this.state.showAppContainer, showContainer: false })}></div>)
+            && (<div style={{color: options.centralizerAppsIconColor}} className="olyauth__centralizerAppsIcon" onClick={() => this.setState({ showAppContainer: !this.state.showAppContainer, showContainer: false })}></div>)
           }
           <div className={gravatarClassnames} onClick={() => this.setState({ showContainer: !this.state.showContainer, showAppContainer: false })}>
             {profileImg}
