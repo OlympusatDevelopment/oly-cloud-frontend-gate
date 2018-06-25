@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { default as styles } from './styles';
-import headerStyles from './headerStyles';
+import headerStyles from '../headerStyles';
 import { AppMenu } from '../AppMenu';
 import { CentralizerFooter } from '../CentralizerFooter';
 import { CentralizerHeader } from '../CentralizerHeader';

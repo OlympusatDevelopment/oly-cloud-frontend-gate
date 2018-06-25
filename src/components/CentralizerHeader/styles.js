@@ -30,8 +30,23 @@ export default {
     overflow: 'hidden',
     borderBottom: `1px solid ${color.border}`,
   },
+  column:{
+    float: 'left',
+    paddingLeft: '12px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingTop: '18px'
+  },
+  columnFirst:{
+    width: '33%',
+    paddingLeft: '0',
+    paddingTop: '0'
+  },
   headerText: {
-    display: 'inline-block'
+    display: 'inline-block',
+    // lineHeight: 1.25,
+    marginTop: 0
   },
   headerName: {
     fontSize: '16px',
@@ -39,23 +54,22 @@ export default {
   },
   headerUsername: {
     display: 'block',
-    fontSize: '12px',
+    fontSize: '12px', 
     marginTop: '12px',
     opacity: '0.7'
   },
   headerGravatar: {
     display: 'inline-block',
     textAlign: 'right',
-    width: '51px',
-    height: '51px',
+    width: '100%',
+    height: 'auto',
     borderRadius: '50%',
     overflow: 'hidden',
-    float: 'right',
     marginTop: '9px'
   },
   headerGravatarImg: {
     textAlign: 'center',
-    maxWidth: 'auto',
-    height: "100%"
-  },
+    maxWidth: '100%',
+    height: "auto"
+  }
 }

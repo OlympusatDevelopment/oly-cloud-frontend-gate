@@ -57,8 +57,8 @@ export default {
       && window.Oly.options
       && window.Oly.options.messages
       && window.Oly.options.messages[key])
-      ? window.Oly.options.messages[key]
-      : false;
+        ? window.Oly.options.messages[key]
+        : false;
   },
 
   getTitleFromOptions(rootKey, key) {
@@ -67,7 +67,7 @@ export default {
       && window.Oly.options.titles
       && window.Oly.options.titles[rootKey]
       && window.Oly.options.titles[rootKey][key])
-      ? window.Oly.options.titles[rootKey][key]
-      : false;
+        ? window.Oly.options.titles[rootKey][key]
+        : false;
   }
 };

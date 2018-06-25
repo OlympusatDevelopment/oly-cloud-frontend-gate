@@ -10,7 +10,7 @@ const dummy = {
     "username": "adam@olympusat.com",
     "email": "adam@olympusat.com",
     "name": "Adam",
-    "lastname": "Gedneys",
+    "lastname": "Eli is mini-me",
     "organization": {
       "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
       "name": "Olympusat"
@@ -60,32 +60,10 @@ const dummy = {
       "slug": "olyhub",
       "googleUaId": null, 
       "description": "The primary Olyhub app for buying/selling content",
-      "domain": "https://stage.olyhub.tv",
+      "domain": "https://olyhub.tv",
       "logo": "https://assets-prod.oly.cloud/resources/apps/olyhub/olyhub_logo_v1_blackx120.png",
       "secret": null,
       "isActive": true
-    },
-    {
-      "id": "24a7bee8-52fc-480d-8994-5eb164c98c6d",
-      "name": "ACCOUNTS",
-      "slug": "accounts",
-      "googleUaId": null,
-      "description": "The primary accounts application entity used for platform wide account policy permission provisioning.",
-      "domain": "https://account.olyhub.tv",
-      "logo": "https://assets-prod.oly.cloud/resources/apps/accounts/circlecompass.png",
-      "secret": null,
-      "isActive": true
-    },
-    {
-      "id": "3740cf87-57b4-463d-8ea8-0a6ef5f4e733",
-      "name": "OLYHUB CATALOG",
-      "slug": "olyhub-catalog",
-      "googleUaId": null,
-      "description": null,
-      "domain": "http://catalog.olyhub.tv",
-      "logo": "https://assets-prod.oly.cloud/resources/apps/default_logo.png",
-      "secret": null,
-      "isActive": false
     },
     {
       "id": "3ef08019-f18b-4d1d-9378-c1e1bd6aaaf6",
@@ -108,28 +86,6 @@ const dummy = {
       "logo": "https://assets-prod.oly.cloud/resources/apps/cloudplat-management/briefcase.png",
       "secret": null,
       "isActive": true
-    },
-    {
-      "id": "b5a08456-535e-484c-91b7-e2fdaf9c92f1",
-      "name": "REPORTS",
-      "slug": "reports",
-      "googleUaId": null,
-      "description": "Reports app",
-      "domain": "http://analytics.oly.cloud",
-      "logo": "https://assets-prod.oly.cloud/resources/apps/reports/magnifyingglass.png",
-      "secret": null,
-      "isActive": true
-    },
-    {
-      "id": "bb87dca2-cf9f-4d6f-87d8-2abc5896af7c",
-      "name": "DISTRIBUTION",
-      "slug": "distribution",
-      "googleUaId": null,
-      "description": "Olympusat cloud-based distribution app",
-      "domain": "https://distribution.olympusat.tech",
-      "logo": "https://assets-prod.oly.cloud/resources/apps/distribution/tv.png",
-      "secret": null,
-      "isActive": true
     }
   ],
   roles:[
@@ -139,7 +95,7 @@ const dummy = {
       "organization": {
         "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
         "name": "Olympusat",
-        "logo": "https://assets-prod.oly.cloud/resources/apps/reports/magnifyingglass.png"
+        "logo": "https://image4.owler.com/logo/olympusat_owler_20160421_110829_original.png"
       },
       "defaultGroup": null,
       "groups": [
@@ -202,15 +158,15 @@ export default class UIController{
 
     // Get the wrapper we just placed on the DOM
     const $injectElem = document.getElementById(CENTRALIZER_ID);
-    console.log('CENTRALIZER', user, apps, roles);
+    // console.log('CENTRALIZER', user, apps, roles);
 
     // @todo comment user check back in after dev
     // if ($injectElem && user) {
     if ($injectElem) {
       ReactDOM.render(<Centralizer user={dummy.user} apps={dummy.apps} roles={dummy.roles} options={this.options} />, $injectElem);
       // ReactDOM.render(<Centralizer user={user} apps={apps} roles={roles} options={this.options} />, $injectElem);
-    }
-  }
+    }  
+  } 
 
   /**
   * HOOK for destroying the centralizer.

@@ -6,6 +6,7 @@ export class RoleSelector extends Component {
 
   onItemClick(){
     // assumeRole logic here
+    alert('Role clicked: trigger assumeRole fn from this event')
   }
 
   render() {
