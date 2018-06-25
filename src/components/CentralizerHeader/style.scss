@@ -1,7 +1,63 @@
 .olyauth{
   &__centralizer{
     &Header{
-  
+      background: #fff;
+      padding: 0 9px 9px;
+      overflow: hidden;
+      border-bottom: 1px solid #dedddf;
+
+      >div{
+        float: left;
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 18px;
+
+        &:first-of-type{
+          width: 33%;
+          padding-left: 0;
+          padding-top: 0;
+
+          >div{
+            display: inline-block;
+            text-align: right;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-top: 9px;
+
+            img{
+              text-align: center;
+              max-width: 100%;
+              height: auto;
+            }
+          }
+        }
+
+        &:last-of-type{
+          >p{
+            display: inline-block;
+            margin-top: 0;
+
+            &:first-of-type{
+              >span{
+                font-size: 16px;
+                margin-top: 3px;
+              }
+            }
+            &:last-of-type{
+              >span{
+                display: block;
+                font-size: 12px;
+                margin-top: 12px;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
