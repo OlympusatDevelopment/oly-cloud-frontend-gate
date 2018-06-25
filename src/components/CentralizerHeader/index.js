@@ -5,7 +5,7 @@ import './style.scss';
 export class CentralizerHeader extends Component {
   render() { 
     const { options, user } = this.props; 
-    console.log('UUUser',user); 
+   
     return (
       <div className="olyauth__centralizerHeader" style={styles.header}>
         <div style={Object.assign({}, styles.column, styles.columnFirst)} >
