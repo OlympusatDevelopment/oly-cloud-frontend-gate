@@ -32,7 +32,7 @@ export default `
     vertical-align: middle;
   }
 
-	.olyauth__mainMenuInner ul li:hover{
+	.olyauth__appMenuInner ul li:hover{
 		background: #f7f7f7;
 		color: #333;
 		cursor: pointer;

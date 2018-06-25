@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles';
 import { RoleItem } from '../RoleItem';
+import './style.scss';
 
 export class RoleSelector extends Component {
 

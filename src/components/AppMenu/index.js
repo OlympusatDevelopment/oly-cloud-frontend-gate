@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import styles from './styles';
-
+import './style.scss';
+ 
 export class AppMenu extends Component {
   render() {
-    const { apps } = this.props;
-
+    const { apps } = this.props; 
+    
     return (
-      <div className="olyauth__mainMenu" style={styles.olyauth__mainMenu}>
-        <div className="olyauth__mainMenuInner" style={styles.olyauth__mainMenuInner}>
-          <ul style={styles.ul}>
+      <div className="olyauth__appMenu">
+        <div className="olyauth__appMenuInner">
+          <ul>
             {apps.map(app => {
               return (
-                <li key={Math.random()} style={styles.li}>
-                  <a style={styles.link} href={app.domain} >
-                    <img style={styles.icon} src={app.logo} />
-                    {app.name}
+                <li key={Math.random()}>
+                  <a href={app.domain} >
+                    <img src={app.logo} />
+                    <span>{app.name}</span>
                   </a>
                 </li>
               );

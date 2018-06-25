@@ -1,6 +1,6 @@
 import UIController from './controllers/UIController';
 import { utils, CONSTANTS } from '@olympusat/oly-client-sdk';
-import './components/imports.scss';
+
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows
  * the config argument is the main configuration object passed to the instantitation

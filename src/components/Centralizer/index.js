@@ -6,7 +6,8 @@ import { CentralizerFooter } from '../CentralizerFooter';
 import { CentralizerHeader } from '../CentralizerHeader';
 import { RoleSelector } from '../RoleSelector';
 import utils from '../../utils';
-
+import './style.scss';
+ 
 const {
   APP_MENU,
   CENTRALIZER_ID

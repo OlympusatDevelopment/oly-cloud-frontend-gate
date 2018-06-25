@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles';
+import './style.scss';
 
 export class CentralizerHeader extends Component {
   render() { 
