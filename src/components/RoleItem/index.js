@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles'; 
-
+import './style.scss';
+ 
 export class RoleItem extends Component {
   render() {
     const { role, onItemClick, activeRole } = this.props;

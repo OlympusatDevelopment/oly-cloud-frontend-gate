@@ -1,21 +1,21 @@
 import UIController from './controllers/UIController';
 import { utils, CONSTANTS } from '@olympusat/oly-client-sdk';
-
+import './components/imports.scss';
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows
  * the config argument is the main configuration object passed to the instantitation
  * @param options 
- * @constructor    
+ * @constructor      
  */ 
 export default class Gate{
   constructor(options){
     this.bootstrap(options);
   }
  
-  bootstrap(options){   
+  bootstrap(options){
     document.addEventListener(CONSTANTS.SDK_DATA_READY_EVT_NAME, () => {
       utils.options = options; //sdk Options
-        
+      
       if (window.Oly) {
         // Merge our options into the sdk options
         window.Oly.options.ui = options;
