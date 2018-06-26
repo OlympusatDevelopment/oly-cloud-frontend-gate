@@ -3,6 +3,7 @@ import './style.scss';
  
 export class RoleItem extends Component {
   render() {
+    const t = true; 
     const { role, onItemClick, activeRole } = this.props;
     return ( 
       <li className="olyauth__centralizerRoleItem" onClick={onItemClick}>
@@ -13,7 +14,7 @@ export class RoleItem extends Component {
           <p className="bold">{role.name}</p>
           <p>{role.organization.name}</p>
         </div>
-      </li>
+      </li> 
     )
   }
 }
