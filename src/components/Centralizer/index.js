@@ -27,6 +27,23 @@ export class Centralizer extends Component {
 
     this.setVisibleInterface = this.setVisibleInterface.bind(this);
     this.onRoleChange = this.onRoleChange.bind(this);
+
+    this.controlClickout();
+  }
+
+  /**
+   * LISTEN FOR non centralizer body clicks to close interfaces on click out
+   */
+  controlClickout(){
+    const self = this;
+    document.body.onclick = function(e){
+      if (e.target.closest('#olyauthCentralizer') === null) {
+        self.setState({
+          showContainer: false,
+          showAppContainer: false,
+        });
+      }
+    }
   }
 
   componentWillReceiveProps(nextState) {
