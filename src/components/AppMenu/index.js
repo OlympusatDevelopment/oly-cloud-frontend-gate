@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.scss';
+import 'src/components/AppMenu/style.scss';
  
 export class AppMenu extends Component {
   render() {

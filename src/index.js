@@ -1,6 +1,6 @@
-import UIController from './controllers/UIController';
+import UIController from 'src/controllers/UIController';
 import { utils, CONSTANTS } from '@olympusat/oly-client-sdk';
-import './style.scss';
+import 'src/style.scss';
 
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows

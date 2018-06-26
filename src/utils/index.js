@@ -1,7 +1,7 @@
 import { 
   OPTIONS_LS_KEY
-} from './constants';
-import * as constants from './constants';
+} from 'src/utils/constants';
+import * as constants from 'src/utils/constants';
 
 let options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || (window.Oly ? window.Oly.options : null);
 

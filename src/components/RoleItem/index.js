@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import './style.scss';
+import 'src/components/RoleItem/style.scss';
  
 export class RoleItem extends Component {
   constructor(props){

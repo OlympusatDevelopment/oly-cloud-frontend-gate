@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { RoleItem } from '../RoleItem';
-import './style.scss';
+import { RoleItem } from 'src/components/RoleItem';
+import 'src/components/RoleSelector/style.scss';
 
 export class RoleSelector extends Component {
   constructor(props){

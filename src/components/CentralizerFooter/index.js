@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.scss';
+import 'src/components/CentralizerFooter/style.scss';
 
 export class CentralizerFooter extends Component {
   render() { 

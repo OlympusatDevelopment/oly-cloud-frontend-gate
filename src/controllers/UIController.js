@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Centralizer } from '../components/Centralizer';
-import {CENTRALIZER_ID} from '../utils/constants';
+import { Centralizer } from 'src/components/Centralizer';
+import {CENTRALIZER_ID} from 'src/utils/constants';
 
 const dummy = {
   user: {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { AppMenu } from '../AppMenu';
-import { CentralizerFooter } from '../CentralizerFooter';
-import { CentralizerHeader } from '../CentralizerHeader';
-import { RoleSelector } from '../RoleSelector';
-import utils from '../../utils';
-import './style.scss';
+import { AppMenu } from 'src/components/AppMenu';
+import { CentralizerFooter } from 'src/components/CentralizerFooter';
+import { CentralizerHeader } from 'src/components/CentralizerHeader';
+import { RoleSelector } from 'src/components/RoleSelector';
+import utils from 'src/utils';
+import 'src/components/Centralizer/style.scss';
  
 const {
   APP_MENU,
