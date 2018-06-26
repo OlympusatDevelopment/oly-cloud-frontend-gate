@@ -5,7 +5,7 @@ import './style.scss';
 export class RoleSelector extends Component {
 
   onItemClick(){
-    // assumeRole logic here
+    // assumeRole logic here, via an sdk window obj call
     alert('Role clicked: trigger assumeRole fn from this event')
   }
 
