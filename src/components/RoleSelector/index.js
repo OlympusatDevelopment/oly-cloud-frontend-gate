@@ -3,18 +3,24 @@ import { RoleItem } from '../RoleItem';
 import './style.scss';
 
 export class RoleSelector extends Component {
+  constructor(props){
+    super(props);
 
-  onItemClick(){
-    // assumeRole logic here, via an sdk window obj call
-    alert('Role clicked: trigger assumeRole fn from this event')
+    this.onItemClick = this.onItemClick.bind(this);
+  }
+  onItemClick(id){
+    window.Oly.Modules.Roles.assumeRole(id);
+    this.props.onRoleChange(id);
   }
 
   render() {
-    return (
+    const {assumedRole} = this.props;
+
+    return ( 
       <div className="olyauth__roleSelector">
         <div className="olyauth__roleSelectorInner">
           <ul>
-            { this.props.roles.map(role => (<RoleItem key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
+            { this.props.roles.map(role => (<RoleItem isActive={assumedRole === role.id} key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
           </ul>
         </div>
       </div>

@@ -21,10 +21,12 @@ export class Centralizer extends Component {
       roles: this.props.roles || [],
       interface: APP_MENU,
       showContainer: false,
-      showAppContainer: false
+      showAppContainer: false,
+      assumedRole: this.props.user.assumedRole
     }
 
     this.setVisibleInterface = this.setVisibleInterface.bind(this);
+    this.onRoleChange = this.onRoleChange.bind(this);
   }
 
   componentWillReceiveProps(nextState) {
@@ -34,6 +36,10 @@ export class Centralizer extends Component {
       roles: nextState.roles
     });
   } 
+
+  onRoleChange(id){
+    this.setState({assumedRole: id});
+  }
 
 	/**
 	 * BUILD the primary container
@@ -73,11 +79,11 @@ export class Centralizer extends Component {
    * @param {*} nterface 
    */
   setVisibleInterface(nterface){
-    const {roles} = this.state;
+    const {roles, assumedRole} = this.state;
 
     switch (nterface) {
       default:
-        return (<RoleSelector roles={roles}/>);
+        return (<RoleSelector roles={roles} assumedRole={assumedRole} onRoleChange={this.onRoleChange}/>);
     }
   }
 

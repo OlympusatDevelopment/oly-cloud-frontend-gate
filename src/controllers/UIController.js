@@ -7,6 +7,7 @@ const dummy = {
   user: {
     "id": "1bb3d0c0-62d4-4d08-8cb8-5c32acc56182",
     "olyId": "USR-BJWibxpWOz",
+    "assumedRole": "8aba3f93-d2be-40cc-8e32-2aeeffac2e87",
     "username": "adam@olympusat.com",
     "email": "adam@olympusat.com",
     "name": "Adam",
