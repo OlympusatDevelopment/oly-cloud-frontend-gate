@@ -1,7 +1,15 @@
 .olyauth{
   &__role{
     &Selector{
-    
+      &Inner{
+        min-height: 200px;
+        background: #efefef;
+
+        ul{
+          margin: 0;
+          padding: 0;
+        }
+      }
     }
   }
 }
