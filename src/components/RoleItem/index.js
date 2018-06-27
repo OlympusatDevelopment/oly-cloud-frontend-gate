@@ -21,7 +21,14 @@ export class RoleItem extends Component {
   }
 
   render() {
-    const { role, onItemClick} = this.props;
+    const { role, onItemClick, options} = this.props;
+    const hasLogo = !!role.organization.logo;
+    const logoImg = !hasLogo
+    ? (<p style={{ background: options.brandingColor }}>{role.organization.name.charAt(0).toUpperCase()}</p>) 
+    : (<img src={role.organization.logo} alt={role.organization.name}/>);
+    const logoClassNames = !hasLogo 
+      ? 'olyauth__centralizerRoleItem--cssLogo' 
+      : '';
 
     return ( 
       <li data-activemessage="active" className={this.state.classes} onClick={
@@ -29,8 +36,8 @@ export class RoleItem extends Component {
           onItemClick(role.id); 
         }
       }>
-        <div>
-          <img src={role.organization.logo} alt={role.organization.name}/>
+        <div className={logoClassNames}>
+          {logoImg}
         </div>
         <div>
           <p className="bold">{role.name}</p>

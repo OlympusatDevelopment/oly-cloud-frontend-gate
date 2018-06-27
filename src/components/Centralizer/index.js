@@ -100,7 +100,7 @@ export class Centralizer extends Component {
 
     switch (nterface) {
       default:
-        return (<RoleSelector roles={roles} assumedRole={assumedRole} onRoleChange={this.onRoleChange}/>);
+        return (<RoleSelector roles={roles} assumedRole={assumedRole} onRoleChange={this.onRoleChange} options={this.props.options}/>);
     }
   }
 

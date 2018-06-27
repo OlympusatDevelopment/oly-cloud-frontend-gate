@@ -113,7 +113,7 @@ const dummy = {
       "organization": {
         "id": "a27d0c36-915d-450d-8401-c7e27f3b6a13",
         "name": "Fake Co.",
-        "logo": "https://assets-prod.oly.cloud/resources/apps/distribution/tv.png",
+        "logo": "",
       },
       "defaultGroup": null,
       "groups": [
