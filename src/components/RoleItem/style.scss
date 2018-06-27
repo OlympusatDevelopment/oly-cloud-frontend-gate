@@ -25,11 +25,12 @@
         padding-left: 12px;
 
         &:first-of-type{
-          width: 57px;
+          width: 45px;
 
           img{
-            max-height: 45px;
-            max-width: 59px; 
+            max-height: 100%;
+            height: auto;
+            max-width: 100%;
           }
         }
 
