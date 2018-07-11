@@ -2,12 +2,13 @@ import {
   OPTIONS_LS_KEY
 } from 'src/utils/constants';
 import * as constants from 'src/utils/constants';
-
+ 
 let options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || (window.Oly ? window.Oly.options : null);
-
+ 
 export default {
   constants,
   options,
+  noty: {},// Gets set on bootstrap if the sdk has realtime enabled
 
   form: {
     diffPasswords(p1, p2) {

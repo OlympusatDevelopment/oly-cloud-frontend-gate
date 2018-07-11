@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Centralizer } from 'src/components/Centralizer';
 import {CENTRALIZER_ID} from 'src/utils/constants';
+import utils from 'src/utils';
 
 const dummy = {
   user: {
@@ -135,6 +136,55 @@ export default class UIController{
 
     this.showCentralizer = this.showCentralizer.bind(this);
     this.hideCentralizer = this.hideCentralizer.bind(this);
+
+    // If realtime is enabled on the sdk, init noty for push notifications
+    if (window.Oly.options.realtime) {
+      utils.noty = require('noty');
+
+      this._bootstrapPushNotifications(utils.noty);
+    }
+  }
+
+  /**
+   * INCLUDES the notification library and connects it to the socket stream.
+   * STYLES are imported in the styles.scss file.
+   * @param {*} Noty 
+   */
+  _bootstrapPushNotifications(Noty) {
+    const _importedTheme = 'semanticui';
+
+    let notyOptions = {
+      layout: 'bottomRight',
+      type: 'alert',
+      theme: _importedTheme,
+      animation: {
+        open: 'animated bounceInRight', // Animate.css class names
+        close: 'animated bounceOutRight' // Animate.css class names
+      },
+      timeout: 3000,
+      progressBar: true
+    };
+
+    if (this.options.notifications) {
+      notyOptions = Object.assign(
+        {},
+        notyOptions, 
+        this.options.notifications, 
+        {theme: _importedTheme}// Protect the theme because stylesheets have to be programmaticcaly imported in the styles.scss file
+      );
+    }
+
+    if (window.Oly.$tream) {
+      window.Oly.$tream.subscribe(e => {
+        if (e.header && e.header.name === 'notification') {
+          if (e.payload && e.payload.message) {
+            notyOptions.text = e.payload.message + e.header.timestamp;
+
+            new Noty(notyOptions).show();
+          }
+        }
+      })
+    }
   }
 
   /**

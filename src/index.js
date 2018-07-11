@@ -1,5 +1,6 @@
 import UIController from 'src/controllers/UIController';
-import { utils, CONSTANTS } from '@olympusat/oly-client-sdk';
+import { CONSTANTS } from '@olympusat/oly-client-sdk';
+import utils from 'src/utils';
 import 'src/style.scss';
 
 /** 
@@ -15,9 +16,10 @@ export default class Gate{
  
   bootstrap(options){
     document.addEventListener(CONSTANTS.SDK_DATA_READY_EVT_NAME, () => {
-      utils.options = options; //sdk Options
+      utils.options = options;
       
       if (window.Oly) {
+
         // Merge our options into the sdk options
         window.Oly.options.ui = options;
         window.Oly.UI = new UIController(options); 
