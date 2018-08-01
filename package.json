@@ -1,6 +1,6 @@
 {
   "name": "oly-client-gate",
-  "version": "16.1.0",
+  "version": "16.1.2",
   "description": "Olympusat Client SDK Auth0 Gate",
   "main": "dist/oly-client-gate.js",
   "scripts": {
