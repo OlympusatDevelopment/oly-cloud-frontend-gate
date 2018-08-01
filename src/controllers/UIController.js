@@ -127,43 +127,29 @@ const dummy = {
     }
   ]
 };
+
+const _importedTheme = 'semanticui';
+let notyOptions = {
+  layout: 'bottomRight',
+  type: 'alert',
+  theme: _importedTheme,
+  animation: {
+    open: 'animated bounceInRight', // Animate.css class names
+    close: 'animated bounceOutRight' // Animate.css class names
+  },
+  timeout: 3000,
+  progressBar: true
+};
+
 /**
  * CONTROLS interfacing with UI functionality ie. show/hide centralizer
  */
 export default class UIController{
   constructor(options){
     this.options = options;
-
     this.showCentralizer = this.showCentralizer.bind(this);
     this.hideCentralizer = this.hideCentralizer.bind(this);
-
-    // If realtime is enabled on the sdk, init noty for push notifications
-    if (window.Oly.options.realtime) {
-      utils.noty = require('noty');
-
-      this._bootstrapPushNotifications(utils.noty);
-    }
-  }
-
-  /**
-   * INCLUDES the notification library and connects it to the socket stream.
-   * STYLES are imported in the styles.scss file.
-   * @param {*} Noty 
-   */
-  _bootstrapPushNotifications(Noty) {
-    const _importedTheme = 'semanticui';
-
-    let notyOptions = {
-      layout: 'bottomRight',
-      type: 'alert',
-      theme: _importedTheme,
-      animation: {
-        open: 'animated bounceInRight', // Animate.css class names
-        close: 'animated bounceOutRight' // Animate.css class names
-      },
-      timeout: 3000,
-      progressBar: true
-    };
+    this.notify = this.notify.bind(this);
 
     if (this.options.notifications) {
       notyOptions = Object.assign(
@@ -174,11 +160,25 @@ export default class UIController{
       );
     }
 
+    utils.noty = require('noty');
+
+    // If realtime is enabled on the sdk, init noty for push notifications
+    if (window.Oly.options.realtime) {
+      this._bootstrapPushNotifications(utils.noty);
+    }
+  }
+
+  /**
+   * INCLUDES the notification library and connects it to the socket stream.
+   * STYLES are imported in the styles.scss file.
+   * @param {*} Noty 
+   */
+  _bootstrapPushNotifications(Noty) {
     if (window.Oly.$tream) {
       window.Oly.$tream.subscribe(e => {
         if (e.header && e.header.name === 'notification') {
           if (e.payload && e.payload.message) {
-            notyOptions.text = e.payload.message + e.header.timestamp;
+            notyOptions.text = e.payload.message;
 
             new Noty(notyOptions).show();
           }
@@ -186,6 +186,16 @@ export default class UIController{
       })
     }
   }
+
+  /**
+   * API for triggering a notification from the window.Oly.UI.notify command.
+   * options arg takes a noty config object
+   * @param {*} message 
+   * @param {*} options 
+   */
+  static notify(text, options={}) {
+    new utils.noty(Object.assign(notyOptions, options, {text})).show();
+  }  
 
   /**
   * CREATES an instance of the centralizer
