@@ -149,6 +149,7 @@ export default class UIController{
     this.options = options;
     this.showCentralizer = this.showCentralizer.bind(this);
     this.hideCentralizer = this.hideCentralizer.bind(this);
+    this.notify = this.notify.bind(this);
    
     if (this.options.notifications) {
       notyOptions = Object.assign(
@@ -192,7 +193,7 @@ export default class UIController{
    * @param {*} message 
    * @param {*} options 
    */
-  static notify(text, options={}) {
+  notify(text, options={}) {
     new utils.noty(Object.assign(notyOptions, options, {text})).show();
   }  
 
