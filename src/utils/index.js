@@ -1,19 +1,14 @@
 import { 
-  OPTIONS_LS_KEY,
-  INTERFACE_MESSAGE
-} from './constants';
-import * as constants from './constants';
-
+  OPTIONS_LS_KEY
+} from 'src/utils/constants';
+import * as constants from 'src/utils/constants';
+ 
 let options = JSON.parse(localStorage.getItem(OPTIONS_LS_KEY)) || (window.Oly ? window.Oly.options : null);
-
+ 
 export default {
   constants,
-  options: undefined,
-  OlyAuthMeta: {
-    logo: options ? options.logo : '',
-    brandingColor: options ? options.brandingColor : '',
-    title: options ? options.title : ''
-  },
+  options,
+  noty: {},// Gets set on bootstrap if the sdk has realtime enabled
 
   form: {
     diffPasswords(p1, p2) {
@@ -63,8 +58,8 @@ export default {
       && window.Oly.options
       && window.Oly.options.messages
       && window.Oly.options.messages[key])
-      ? window.Oly.options.messages[key]
-      : false;
+        ? window.Oly.options.messages[key]
+        : false;
   },
 
   getTitleFromOptions(rootKey, key) {
@@ -73,7 +68,7 @@ export default {
       && window.Oly.options.titles
       && window.Oly.options.titles[rootKey]
       && window.Oly.options.titles[rootKey][key])
-      ? window.Oly.options.titles[rootKey][key]
-      : false;
+        ? window.Oly.options.titles[rootKey][key]
+        : false;
   }
 };

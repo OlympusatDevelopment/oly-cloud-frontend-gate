@@ -1,0 +1,53 @@
+.olyauth{
+  &__appMenu{
+    &Inner{ 
+
+      ul{
+        overflow: hidden;
+        padding: 0 18px 69px;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        li{ 
+          padding: 9px;
+          width: 30%;
+          height: auto;
+          float: left;
+          text-align: center;
+          line-height: 1;
+          margin: 3px;
+          box-sizing: border-box;
+          font-size: 12px;
+          list-style-type: none;
+
+          &:hover{
+            background: #f7f7f7;
+            color: #333;
+            cursor: pointer;
+            border-radius: 3px;
+          }
+
+          img{
+            max-width: 45px;
+          }
+
+          a{
+            text-decoration: none;
+            color: #333; 
+            
+            &:hover{
+              text-decoration: none;
+            }
+
+            >span{
+              padding-top: 9px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

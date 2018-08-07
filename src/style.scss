@@ -1,0 +1,30 @@
+@import '../node_modules/animate.css/animate.min.css';
+@import '../node_modules/noty/lib/noty.css';
+@import '../node_modules/noty/lib/themes/semanticui.css';
+ 
+.top_arr{
+  &:after, &:before{
+    bottom: 100%;
+    right: 4px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after{
+    border-color: rgba(222, 221, 223, 0);
+    border-bottom-color: #fff;
+    border-width: 13px;
+    margin-left: -13px;
+  }
+
+  &:before{
+    border-color: rgba(222, 221, 223, 0);
+    border-bottom-color: #fff;
+    border-width: 13px;
+    margin-left: -13px;
+  }
+}
