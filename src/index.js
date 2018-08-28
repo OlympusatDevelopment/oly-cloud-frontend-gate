@@ -1,7 +1,7 @@
 import UIController from 'src/controllers/UIController';
 import { CONSTANTS } from '@olympusat/oly-cloud-frontend-sdk';
 import utils from 'src/utils';
-import 'src/style.scss';
+import 'src/style.scss'; 
  
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows
