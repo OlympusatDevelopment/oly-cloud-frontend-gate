@@ -1,8 +1,8 @@
 {
-  "name": "oly-client-gate",
-  "version": "16.1.3",
+  "name": "oly-cloud-frontend-gate",
+  "version": "16.1.4",
   "description": "Olympusat Client SDK Auth0 Gate",
-  "main": "dist/oly-client-gate.js",
+  "main": "dist/oly-cloud-frontend-gate.js",
   "scripts": {
     "start": "webpack --mode development",
     "build": "webpack --mode production",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:OlympusatDevelopment/oly-client-gate.git"
+    "url": "git@github.com:OlympusatDevelopment/oly-cloud-frontend-gate.git"
   },
   "author": "Adam Gedney <adam@olympusat.com>",
   "license": "ISC",
-  "homepage": "https://github.com/OlympusatDevelopment/oly-client-gate",
+  "homepage": "https://github.com/OlympusatDevelopment/oly-cloud-frontend-gate",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
