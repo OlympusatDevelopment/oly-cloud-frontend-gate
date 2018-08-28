@@ -1,16 +1,16 @@
 import UIController from 'src/controllers/UIController';
-import { CONSTANTS } from '@olympusat/oly-client-sdk';
+import { CONSTANTS } from '@olympusat/oly-cloud-frontend-sdk';
 import utils from 'src/utils';
 import 'src/style.scss';
-
+ 
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows
  * the config argument is the main configuration object passed to the instantitation
- * @param options 
- * @constructor      
+ * @param options  
+ * @constructor       
  */ 
 export default class Gate{
-  constructor(options){
+  constructor(options){ 
     this.bootstrap(options);
   }
  

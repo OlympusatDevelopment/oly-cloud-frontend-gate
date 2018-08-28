@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'oly-client-gate.js',
+    filename: 'oly-cloud-frontend-gate.js',
     library: 'olyclientgate',
     libraryTarget: 'umd'
   },
