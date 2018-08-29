@@ -110,7 +110,7 @@ export class Centralizer extends Component {
     const profileIsDefault = user.profileImage.indexOf('default_profile.jpg') > -1;
     const profileImg = profileIsDefault 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
-      : (<img src={user.profileImage} alt={user.name} />);
+      : (<img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />);
     const gravatarClassnames = profileIsDefault 
       ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' 
       : 'olyauth__centralizerGravatar';
@@ -128,7 +128,7 @@ export class Centralizer extends Component {
           
           {this.state.showContainer && this.makePrimaryContainer(Interface, user)}
           {(this.state.showAppContainer && !options.hideAppCentralizer) 
-            && this.makeAppContainer(<AppMenu apps={this.state.apps} user={user}> </AppMenu>, user)
+            && this.makeAppContainer(<AppMenu options={options} apps={this.state.apps} user={user}> </AppMenu>, user)
           }
         </div>
       </div>

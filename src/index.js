@@ -25,14 +25,13 @@ export default class Gate{
         window.Oly.UI = new UIController(options); 
   
         // If the parent event fired then we can assume we have logged in. It's safe to use the user object.
-        // !@todo reenable user check after sdk api is functioning
-        // if (window.Oly.meta.user) { 
+        if (window.Oly.meta.user) { 
           window.Oly.UI.showCentralizer(
             window.Oly.meta.user,
             window.Oly.meta.roles,
-            window.Oly.meta.activeApps 
+            window.Oly.meta.apps 
           );
-        // }
+        }
       }
   
       if (window.Oly && window.Oly.debugMode) {
