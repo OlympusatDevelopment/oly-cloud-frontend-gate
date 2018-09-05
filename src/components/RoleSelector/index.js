@@ -9,7 +9,7 @@ export class RoleSelector extends Component {
     this.onItemClick = this.onItemClick.bind(this);
   }
   onItemClick(id){
-    window.Oly.Modules.Roles.assumeRole(id);
+    window.Oly.Services.Authorization.assumeRole(id);
     this.props.onRoleChange(id);
   }
 

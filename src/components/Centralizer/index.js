@@ -16,7 +16,7 @@ export class Centralizer extends Component {
     super(props);
 
     this.state = {
-      user: this.props.user || [],
+      user: this.props.user || {},
       apps: this.props.apps || [],
       roles: this.props.roles || [],
       interface: APP_MENU,

@@ -22,9 +22,9 @@ export class RoleItem extends Component {
 
   render() {
     const { role, onItemClick, options} = this.props;
-    const hasLogo = !!role.organization.logo;
+    const hasLogo = role.organization && !!role.organization.logo;
     const logoImg = !hasLogo
-    ? (<p style={{ background: options.brandingColor }}>{role.organization.name.charAt(0).toUpperCase()}</p>) 
+    ? (<p style={{ background: options.brandingColor }}>{(role.organization || role).name.charAt(0).toUpperCase()}</p>) 
     : (<img src={role.organization.logo} alt={role.organization.name}/>);
     const logoClassNames = !hasLogo 
       ? 'olyauth__centralizerRoleItem--cssLogo' 
@@ -41,7 +41,9 @@ export class RoleItem extends Component {
         </div>
         <div>
           <p className="bold">{role.name}</p>
-          <p>{role.organization.name}</p>
+
+          {role.organization && 
+          <p>{role.organization.name}</p>}
         </div>
       </li> 
     )

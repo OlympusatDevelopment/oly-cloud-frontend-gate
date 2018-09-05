@@ -9,7 +9,7 @@ export class CentralizerHeader extends Component {
       <div className="olyauth__centralizerHeader">
         <div>
           <div className="olyauth__centralizerHeaderGravatar">
-            <img src={user.profileImage} alt={user.name} />
+            <img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />
           </div>
         </div>
         <div>
