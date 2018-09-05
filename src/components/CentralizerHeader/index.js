@@ -16,9 +16,9 @@ export class CentralizerHeader extends Component {
           <p>
             <span className="bold" title={user.email}>{user.name} {user.lastname}</span>
           </p>
-          <p>
-            {(user.organization ? user.organization.name : '')}
-          </p>
+          {user.organization && 
+            (<p>user.organization.name</p>)
+          }
           <p>
             <span title={user.email}>{user.email}</span>
           </p>

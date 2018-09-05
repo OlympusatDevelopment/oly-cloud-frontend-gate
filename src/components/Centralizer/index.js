@@ -22,7 +22,7 @@ export class Centralizer extends Component {
       interface: APP_MENU,
       showContainer: false,
       showAppContainer: false,
-      assumedRole: this.props.user.assumedRole
+      assumedRole: window.Oly && window.Oly.meta ? window.Oly.meta.assumedRole : false
     }
 
     this.setVisibleInterface = this.setVisibleInterface.bind(this);
