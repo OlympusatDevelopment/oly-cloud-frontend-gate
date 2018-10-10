@@ -1,0 +1,36 @@
+div.olyauth{
+  &__centralizer{
+    &HeaderUtils{
+      padding: 9px 0 9px 0;
+      overflow: hidden;
+      // height: 45px;
+      float: none;
+      width: 95%;
+      clear: both;
+      border-top: 1px solid #dedddf;
+      margin-top: 18px;
+      padding-top: 18px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      a{
+        display: inline;
+        text-decoration: none;
+        color: #888a95;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0;
+
+        &:first-of-type{
+          margin-left: 57px;
+        }
+
+        &:hover{
+          cursor: pointer;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}

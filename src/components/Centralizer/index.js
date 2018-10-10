@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { AppMenu } from 'src/components/AppMenu';
-import { CentralizerFooter } from 'src/components/CentralizerFooter';
 import { CentralizerHeader } from 'src/components/CentralizerHeader';
 import { RoleSelector } from 'src/components/RoleSelector';
 import utils from 'src/utils';
@@ -69,7 +68,6 @@ export class Centralizer extends Component {
       <div className="olyauth__centralizerContainer top_arr">
         <CentralizerHeader options={this.props.options} user={user} />
         <div>{Interface}</div>
-        <CentralizerFooter options={this.props.options} />
       </div>
     )
   }
@@ -84,7 +82,6 @@ export class Centralizer extends Component {
     return (
       <div className="olyauth__centralizerAppContainer top_arr">
         <div>{Interface}</div>
-        <CentralizerFooter options={this.props.options} />
       </div>
     )
   }

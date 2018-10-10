@@ -19,6 +19,7 @@ export class RoleSelector extends Component {
     return ( 
       <div className="olyauth__roleSelector">
         <div className="olyauth__roleSelectorInner">
+          <p>Use as...</p>
           <ul>
             { this.props.roles.map(role => (<RoleItem options={this.props.options} isActive={assumedRole === role.id} key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
           </ul>

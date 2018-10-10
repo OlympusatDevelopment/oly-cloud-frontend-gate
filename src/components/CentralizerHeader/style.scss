@@ -2,12 +2,16 @@
   &__centralizer{
     &Header{
       background: #fff;
-      padding: 0 9px 9px;
+      padding: 6px 21px 27px;
       overflow: hidden;
-      border-bottom: 1px solid #dedddf;
+      // border-bottom: 1px solid #dedddf;
+      position: relative;
+      display: flex;
+      // flex-direction: column;
+      // justify-content: center;
 
       >div{
-        float: left;
+        // float: left;
         padding-left: 12px;
         display: flex;
         flex-direction: column;
@@ -18,12 +22,12 @@
           width: 49px;
           padding-left: 0;
           padding-top: 0;
+          width: 126px;
+          margin-top: 18px;
 
           >div{// Gravatar
             display: inline-block;
             text-align: right;
-            width: 49px;
-            height: 49px;
             border-radius: 50%;
             overflow: hidden;
             margin-top: 9px;
@@ -38,6 +42,8 @@
         }
 
         &:last-of-type{
+          width: 100%;
+
           >p{
             display: inline-block;
             margin-top: 0;
@@ -47,14 +53,17 @@
               >span{
                 font-size: 16px;
                 margin-top: 3px;
+                color: #555;
               }
             }
             &:last-of-type{
               >span{
                 display: block;
                 font-size: 12px;
-                margin-top: 12px;
+                font-weight: 600;
+                margin-top: 6px;
                 opacity: 0.7;
+                color: #598dbd;
               }
             }
           }

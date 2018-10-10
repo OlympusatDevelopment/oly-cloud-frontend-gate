@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'src/components/CentralizerHeader/style.scss';
+import { HeaderUtils} from '../HeaderUtils';
 
 export class CentralizerHeader extends Component {
   render() { 
@@ -14,7 +15,7 @@ export class CentralizerHeader extends Component {
         </div>
         <div>
           <p>
-            <span className="bold" title={user.email}>{user.name} {user.lastname}</span>
+            <span className="bold" title={`${user.name} ${user.lastname}`}>{user.name ? `${user.name} ${user.lastname}` : ''}</span>
           </p>
           {user.organization && 
             (<p>user.organization.name</p>)
@@ -22,6 +23,7 @@ export class CentralizerHeader extends Component {
           <p>
             <span title={user.email}>{user.email}</span>
           </p>
+          <HeaderUtils options={options}></HeaderUtils>
         </div>
       </div>
     )
