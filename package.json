@@ -1,12 +1,13 @@
 {
   "name": "oly-cloud-frontend-gate",
-  "version": "16.1.4",
+  "version": "17.0.0",
   "description": "Olympusat Client SDK Auth0 Gate",
   "main": "dist/oly-cloud-frontend-gate.js",
   "scripts": {
     "start": "webpack --mode development",
     "build": "webpack --mode production",
-    "release": "npm publish"
+    "release": "npm publish",
+    "link": "npm link @olympusat/oly-cloud-frontend-sdk"
   },
   "repository": {
     "type": "git",

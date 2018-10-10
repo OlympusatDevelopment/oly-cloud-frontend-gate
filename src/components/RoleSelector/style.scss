@@ -2,12 +2,21 @@
   &__role{
     &Selector{
       &Inner{
-        min-height: 200px;
-        background: #efefef;
+        background: #f9f9f9;
 
         ul{
           margin: 0;
           padding: 0;
+          // border-top: 1px solid #dedddf;
+        }
+
+        > p{
+          margin: 0;
+          padding-left: 9px;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 2.5;
+          color: #aab0bc;
         }
       }
     }

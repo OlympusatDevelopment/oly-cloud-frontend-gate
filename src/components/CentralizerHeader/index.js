@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'src/components/CentralizerHeader/style.scss';
+import { HeaderUtils} from '../HeaderUtils';
 
 export class CentralizerHeader extends Component {
   render() { 
@@ -9,19 +10,20 @@ export class CentralizerHeader extends Component {
       <div className="olyauth__centralizerHeader">
         <div>
           <div className="olyauth__centralizerHeaderGravatar">
-            <img src={user.profileImage} alt={user.name} />
+            <img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />
           </div>
         </div>
         <div>
           <p>
-            <span className="bold" title={user.email}>{user.name} {user.lastname}</span>
+            <span className="bold" title={`${user.name} ${user.lastname}`}>{user.name ? `${user.name} ${user.lastname}` : ''}</span>
           </p>
-          <p>
-            {(user.organization ? user.organization.name : '')}
-          </p>
+          {user.organization && 
+            (<p>user.organization.name</p>)
+          }
           <p>
             <span title={user.email}>{user.email}</span>
           </p>
+          <HeaderUtils options={options}></HeaderUtils>
         </div>
       </div>
     )

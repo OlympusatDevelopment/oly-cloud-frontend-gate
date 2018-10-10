@@ -9,7 +9,7 @@ export class RoleSelector extends Component {
     this.onItemClick = this.onItemClick.bind(this);
   }
   onItemClick(id){
-    window.Oly.Modules.Roles.assumeRole(id);
+    window.Oly.Services.Authorization.assumeRole(id);
     this.props.onRoleChange(id);
   }
 
@@ -19,6 +19,7 @@ export class RoleSelector extends Component {
     return ( 
       <div className="olyauth__roleSelector">
         <div className="olyauth__roleSelectorInner">
+          <p>Use as...</p>
           <ul>
             { this.props.roles.map(role => (<RoleItem options={this.props.options} isActive={assumedRole === role.id} key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
           </ul>

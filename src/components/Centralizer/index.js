@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { AppMenu } from 'src/components/AppMenu';
-import { CentralizerFooter } from 'src/components/CentralizerFooter';
 import { CentralizerHeader } from 'src/components/CentralizerHeader';
 import { RoleSelector } from 'src/components/RoleSelector';
 import utils from 'src/utils';
@@ -16,13 +15,13 @@ export class Centralizer extends Component {
     super(props);
 
     this.state = {
-      user: this.props.user || [],
+      user: this.props.user || {},
       apps: this.props.apps || [],
       roles: this.props.roles || [],
       interface: APP_MENU,
       showContainer: false,
       showAppContainer: false,
-      assumedRole: this.props.user.assumedRole
+      assumedRole: window.Oly && window.Oly.meta ? window.Oly.meta.assumedRole : false
     }
 
     this.setVisibleInterface = this.setVisibleInterface.bind(this);
@@ -69,7 +68,6 @@ export class Centralizer extends Component {
       <div className="olyauth__centralizerContainer top_arr">
         <CentralizerHeader options={this.props.options} user={user} />
         <div>{Interface}</div>
-        <CentralizerFooter options={this.props.options} />
       </div>
     )
   }
@@ -84,7 +82,6 @@ export class Centralizer extends Component {
     return (
       <div className="olyauth__centralizerAppContainer top_arr">
         <div>{Interface}</div>
-        <CentralizerFooter options={this.props.options} />
       </div>
     )
   }
@@ -110,7 +107,7 @@ export class Centralizer extends Component {
     const profileIsDefault = user.profileImage.indexOf('default_profile.jpg') > -1;
     const profileImg = profileIsDefault 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
-      : (<img src={user.profileImage} alt={user.name} />);
+      : (<img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />);
     const gravatarClassnames = profileIsDefault 
       ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' 
       : 'olyauth__centralizerGravatar';
@@ -128,7 +125,7 @@ export class Centralizer extends Component {
           
           {this.state.showContainer && this.makePrimaryContainer(Interface, user)}
           {(this.state.showAppContainer && !options.hideAppCentralizer) 
-            && this.makeAppContainer(<AppMenu apps={this.state.apps} user={user}> </AppMenu>, user)
+            && this.makeAppContainer(<AppMenu options={options} apps={this.state.apps} user={user}> </AppMenu>, user)
           }
         </div>
       </div>
