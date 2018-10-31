@@ -8,7 +8,7 @@ export class HeaderUtils extends Component {
     return (
       <div className="olyauth__centralizerHeaderUtils">
         <a href={this.props.options.profileSettingsLink}>Settings</a>
-        <a href="#" onClick={() => window.Oly.Services.Auth.logout()}>Sign out</a>
+        <button onClick={() => window.Oly.Services.Auth.logout()}>Sign out</button> 
       </div>
     )
   }
