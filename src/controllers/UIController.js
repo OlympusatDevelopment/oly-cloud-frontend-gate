@@ -201,15 +201,15 @@ export default class UIController{
   * CREATES an instance of the centralizer
   * Centralizer is the user avatar and app centralizer that get put in the top corner of the user's screen.
   */
-  showCentralizer(user, roles, apps){
+  showCentralizer(user, roles, apps, options){
     let self = this;
     let wrapper = document.createElement("div");
     let script = document.createElement('script');
 
     wrapper.id = CENTRALIZER_ID;
     wrapper.style.position = 'absolute';
-    wrapper.style.top = '0';
-    wrapper.style.right = '0';
+    wrapper.style.top = (options.position && options.position.top) ? options.position.top : '0';
+    wrapper.style.right = (options.position && options.position.right) ? options.position.right : '0';
 
     script.type = 'text/javascript';
     script.src = 'https://use.fontawesome.com/33c67670ff.js';// Includes fontawesome, a dependency of the Centralizer component

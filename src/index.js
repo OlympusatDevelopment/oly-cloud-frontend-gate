@@ -29,7 +29,8 @@ export default class Gate{
           window.Oly.UI.showCentralizer(
             window.Oly.meta.user,
             window.Oly.meta.roles,
-            window.Oly.meta.apps 
+            window.Oly.meta.apps,
+            options
           );
         }
       }
