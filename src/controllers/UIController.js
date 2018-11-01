@@ -208,8 +208,8 @@ export default class UIController{
 
     wrapper.id = CENTRALIZER_ID;
     wrapper.style.position = 'absolute';
-    wrapper.style.top = (options.position && options.position.top) ? options.position.top : '0';
-    wrapper.style.right = (options.position && options.position.right) ? options.position.right : '0';
+    wrapper.style.top = (options.position && options.position.top) ? options.position.top.toString() : '0';
+    wrapper.style.right = (options.position && options.position.right) ? options.position.right.toString() : '0';
 
     script.type = 'text/javascript';
     script.src = 'https://use.fontawesome.com/33c67670ff.js';// Includes fontawesome, a dependency of the Centralizer component

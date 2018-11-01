@@ -39,6 +39,7 @@ export default () => ({
     },
     timeout: 3000,
     progressBar: true
-  }
+  },
+  position: {top: 0, right: 0}
 });
 ```
