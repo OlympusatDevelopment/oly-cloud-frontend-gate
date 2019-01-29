@@ -15,13 +15,19 @@ export class RoleSelector extends Component {
 
   render() {
     const {assumedRole} = this.props;
-
+    console.log("constructor " , assumedRole, localStorage.getItem('olyauth.assumedRole'));
+    const _assumedRole = assumedRole.toString().replace(/["']/g, '')
     return ( 
       <div className="olyauth__roleSelector">
         <div className="olyauth__roleSelectorInner">
-          <p>Use as...</p>
+          <p>Enable Role...</p>
           <ul>
-            { this.props.roles.map(role => (<RoleItem options={this.props.options} isActive={assumedRole === role.id} key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
+            { this.props.roles
+              .sort(function(a, b) {
+                const textA = a.name.toUpperCase();
+                const textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+              }).map(role => (<RoleItem options={this.props.options} isActive={_assumedRole === role.id} key={role.id} role={role} onItemClick={this.onItemClick}/>)) }
           </ul>
         </div>
       </div>

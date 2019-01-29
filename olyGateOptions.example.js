@@ -6,6 +6,7 @@ export default () => ({
   profileSettingsLink: '/account',
   appSlug: 'cloudplat-management',
   debugMode: false, // boolean | turns internal console logs on and off
+  reloadPageOnRoleChange: true,
   notifications: {// Optional: All noty options can be passed in here for push notification display
     layout: 'bottomRight',
     type: 'alert',

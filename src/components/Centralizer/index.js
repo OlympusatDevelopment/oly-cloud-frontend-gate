@@ -4,7 +4,8 @@ import { CentralizerHeader } from 'src/components/CentralizerHeader';
 import { RoleSelector } from 'src/components/RoleSelector';
 import utils from 'src/utils';
 import 'src/components/Centralizer/style.scss';
- 
+import { CONSTANTS } from '@olympusat/oly-cloud-frontend-sdk';
+
 const {
   APP_MENU,
   CENTRALIZER_ID
@@ -21,7 +22,7 @@ export class Centralizer extends Component {
       interface: APP_MENU,
       showContainer: false,
       showAppContainer: false,
-      assumedRole: window.Oly && window.Oly.meta ? window.Oly.meta.assumedRole : false
+      assumedRole: this.getAssumedRole()
     }
 
     this.setVisibleInterface = this.setVisibleInterface.bind(this);
@@ -49,12 +50,21 @@ export class Centralizer extends Component {
     this.setState({
       user: nextState.user,
       apps: nextState.apps,
-      roles: nextState.roles
+      roles: nextState.roles,
+      assumedRole: this.getAssumedRole()
     });
   } 
 
+  getAssumedRole() {
+    return localStorage.getItem(CONSTANTS.ASSUMED_ROLE_LS_KEY) || false;
+  }
+
   onRoleChange(id){
     this.setState({assumedRole: id});
+
+    if(this.props.options.reloadPageOnRoleChange) {
+      window.location.reload();
+    }
   }
 
 	/**
