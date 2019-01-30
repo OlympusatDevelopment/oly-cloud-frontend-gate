@@ -14,14 +14,8 @@ div.olyauth{
       flex-direction: row;
       justify-content: space-between;
 
-      button{
-        appearance: none;
-        border: none;
-        background: none;
-      }
-
       a, button{
-        display: inline;
+        display: inline-block;
         text-decoration: none;
         color: #888a95;
         font-size: 14px;
@@ -34,8 +28,18 @@ div.olyauth{
         }
       }
 
-      a{
+      a:first-child{
         margin-left: 57px;
+      }
+
+      button{
+        appearance: none;
+        border: none;
+        background: none;
+
+        &:first-child{
+          margin-left: auto;
+        }
       }
     }
   }
