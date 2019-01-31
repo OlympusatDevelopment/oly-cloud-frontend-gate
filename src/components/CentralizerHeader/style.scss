@@ -25,7 +25,7 @@
           width: 126px;
           margin-top: 18px;
 
-          >div{// Gravatar
+          >div:not(.olyauth__centralizerHeaderGravatar--cssGravatar){// Gravatar
             display: inline-block;
             text-align: right;
             border-radius: 50%;
@@ -67,6 +67,46 @@
               }
             }
           }
+        }
+      }
+
+      &Gravatar{
+        width: 57px;
+        height: 57px;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 9999;
+        color: #fff;
+        font-size: 6px;
+        line-height: 27px;
+  
+        // &:hover{
+        //   cursor: pointer !important;
+        //   opacity: 0.7;
+        // }
+  
+        &--cssGravatar{
+          display: table;
+  
+          p{
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 100;
+            line-height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+  
+        img{
+          text-align: center;
+          max-width: auto;
+          height: 100%;
         }
       }
     }
