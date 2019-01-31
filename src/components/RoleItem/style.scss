@@ -2,7 +2,7 @@
   &__centralizerRole{
     &Item{
       display: block; 
-      padding: 18px 18px 18px 0;      
+      padding: 9px 18px 9px 0;      
       list-style-type: none;    
       cursor: pointer;
       overflow: hidden;
@@ -21,11 +21,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        height: 45px;
+        height: 33px;
         padding-left: 12px;
 
         &:first-of-type{
-          width: 45px;
+          width: 33px;
 
           img{
             max-height: 100%;
@@ -38,6 +38,7 @@
           p{
             margin: 0;
             line-height: 1.2;
+            color: #888a95;
 
             &:last-of-type{
               font-size: 12px;
@@ -49,6 +50,7 @@
       &--active{
         // border: 3px solid rgb(48, 98, 136);
         box-shadow: inset 0 0 3px rgba(0,0,0,0.175);
+        background: #333;
 
         &:after{
           content: attr(data-activemessage);
@@ -57,7 +59,7 @@
           text-align: center;
           position: absolute;
           right: 9px;
-          top: 35%;
+          top: 23%;
           color: #aab0bc;
           // background: #3a7dc5;
           opacity: 0.8;
@@ -82,7 +84,7 @@
           font-size: 16px;
           text-align: center;
           font-weight: 100;
-          line-height: 45px;
+          line-height: 33px;
           display: table-cell;
           vertical-align: middle;
         }

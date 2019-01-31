@@ -3,9 +3,10 @@ export default () => ({
   brandingColor: '#103463',
   centralizerAppsIconColor: '#efefef',
   hideAppCentralizer: false,
-  profileSettingsLink: '/account',
+  profileSettingsLink: '/account', // or false to hide the link in the ui
   appSlug: 'cloudplat-management',
   debugMode: false, // boolean | turns internal console logs on and off
+  reloadPageOnRoleChange: true,
   notifications: {// Optional: All noty options can be passed in here for push notification display
     layout: 'bottomRight',
     type: 'alert',
