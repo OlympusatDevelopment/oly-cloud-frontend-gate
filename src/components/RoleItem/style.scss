@@ -74,6 +74,7 @@
       &--cssLogo{
         display: table;
         height: 100%;
+        box-sizing: content-box !important;
 
         p{
           color: #fff;
