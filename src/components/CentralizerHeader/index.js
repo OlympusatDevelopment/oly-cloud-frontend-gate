@@ -5,7 +5,6 @@ import { HeaderUtils} from '../HeaderUtils';
 export class CentralizerHeader extends Component {
   render() { 
     const { options, user } = this.props; 
-    user.profileImage = false;
     const noProfileImg = !user.profileImage || (user.profileImage || '').indexOf('default_profile.jpg') > -1;
     const profileImg = noProfileImg 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
