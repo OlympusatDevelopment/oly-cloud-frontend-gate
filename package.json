@@ -1,6 +1,6 @@
 {
   "name": "oly-cloud-frontend-gate",
-  "version": "17.1.1",
+  "version": "17.1.2",
   "description": "Olympusat Client SDK Auth0 Gate",
   "main": "dist/oly-cloud-frontend-gate.js",
   "scripts": {
