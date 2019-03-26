@@ -38,7 +38,6 @@ export class ImageUploader extends Component {
         })
       )
       .subscribe(({updateUser}) => {
-        console.log('updateUser ', updateUser);
         this.setState({
           loading: false,
           image: updateUser.profileImage
