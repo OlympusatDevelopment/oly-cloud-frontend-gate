@@ -4,13 +4,13 @@ import { HeaderUtils} from '../HeaderUtils';
 import {ImageUploader} from '../ImageUploader';
 
 export class CentralizerHeader extends Component {
-  render() { 
+  render() {
     const { options, user } = this.props; 
     const noProfileImg = !user.profileImage || (user.profileImage || '').indexOf('default_profile.jpg') > -1;
     const profileImg = noProfileImg 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
       : (<ImageUploader 
-        src={`${options.assetsBucketUrl}${user.profileImage}`} 
+        src={`${user.profileImage}`} 
         user={user} 
         options={options}
         uploadType="USER"
