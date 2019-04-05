@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import 'src/components/CentralizerHeader/style.scss';
 import { HeaderUtils} from '../HeaderUtils';
+import {ImageUploader} from '../ImageUploader';
 
 export class CentralizerHeader extends Component {
-  render() { 
+  render() {
     const { options, user } = this.props; 
-    user.profileImage = false;
     const noProfileImg = !user.profileImage || (user.profileImage || '').indexOf('default_profile.jpg') > -1;
     const profileImg = noProfileImg 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
-      : (<img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />);
+      : (<ImageUploader 
+        src={`${user.profileImage}`} 
+        user={user} 
+        options={options}
+        uploadType="USER"
+        uploadId={window.Oly.meta.user.id}
+        imageBaseUrl="https://dblyojcsq7ets.cloudfront.net"
+        />);
+   
     const gravatarClassnames = noProfileImg 
       ? 'olyauth__centralizerHeaderGravatar olyauth__centralizerHeaderGravatar--cssGravatar' 
       : 'olyauth__centralizerHeaderGravatar';

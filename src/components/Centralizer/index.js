@@ -119,7 +119,7 @@ export class Centralizer extends Component {
     const noProfileImg = !user.profileImage || (user.profileImage || '').indexOf('default_profile.jpg') > -1;
     const profileImg = noProfileImg 
       ? (<p style={{ background: options.brandingColor }}>{user.email.charAt(0).toUpperCase()}</p>) 
-      : (<img src={`${options.assetsBucketUrl}${user.profileImage}`} alt={user.name} />);
+      : (<img src={`${user.profileImage}`} alt={user.name} />);
     const gravatarClassnames = noProfileImg 
       ? 'olyauth__centralizerGravatar olyauth__centralizerGravatar--cssGravatar' 
       : 'olyauth__centralizerGravatar';

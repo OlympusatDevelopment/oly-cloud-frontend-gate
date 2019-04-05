@@ -15,7 +15,6 @@ export class RoleSelector extends Component {
 
   render() {
     const {assumedRole} = this.props;
-    console.log("constructor " , assumedRole, localStorage.getItem('olyauth.assumedRole'));
     const _assumedRole = assumedRole.toString().replace(/["']/g, '')
     return ( 
       <div className="olyauth__roleSelector">
