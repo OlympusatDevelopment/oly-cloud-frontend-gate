@@ -21,7 +21,7 @@ const defaultOptions = {
   },
   position: {top: '12px', right: 0} // Where the ui lays out absolute to the page
 };
-
+ 
 /** 
  * ENTRY POINT for beginning the Gate behaviors & Auth flows
  * the config argument is the main configuration object passed to the instantitation
