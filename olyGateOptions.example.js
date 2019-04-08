@@ -1,20 +1,18 @@
-export default () => ({
-  logo: '/images/olyhub_logo_v1_text_blackx200.png',
+export const sdkGate = {
   brandingColor: '#103463',
   centralizerAppsIconColor: '#efefef',
   hideAppCentralizer: false,
-  profileSettingsLink: '/account', // or false to hide the link in the ui
-  appSlug: 'cloudplat-management',
-  debugMode: false, // boolean | turns internal console logs on and off
+  profileSettingsLink: false, // or url to link to
   reloadPageOnRoleChange: true,
-  notifications: {// Optional: All noty options can be passed in here for push notification display
+  notifications: {// All noty options can be passed in here
     layout: 'bottomRight',
-    type: 'alert',
+    type: 'info',
     animation: {
       open: 'animated bounceInRight', // Animate.css class names
       close: 'animated bounceOutRight' // Animate.css class names
     },
     timeout: 3000,
     progressBar: true
-  }
-});
+  },
+  position: {top: '12px', right: 0} // Where the ui lays out absolute to the page
+};
