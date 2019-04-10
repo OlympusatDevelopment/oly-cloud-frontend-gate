@@ -14,5 +14,5 @@ export const sdkGate = {
     timeout: 3000,
     progressBar: true
   },
-  position: {top: '12px', right: 0} // Where the ui lays out absolute to the page
+  styles: {top: '12px', right: 0, position: 'fixed'} // For overall layout, react syntax styles, ie. zIndex instead of z-index
 };
