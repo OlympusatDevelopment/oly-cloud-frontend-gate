@@ -19,7 +19,7 @@ const defaultOptions = {
     timeout: 3000,
     progressBar: true
   },
-  position: {top: '12px', right: 0} // Where the ui lays out absolute to the page
+  position: {top: '12px', right: 0, position: 'fixed'} // Where the ui lays out absolute to the page
 };
  
 /** 

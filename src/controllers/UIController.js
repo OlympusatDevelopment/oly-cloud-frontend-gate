@@ -82,8 +82,8 @@ export default class UIController{
     let wrapper = document.createElement("div");
     let script = document.createElement('script');
 
-    wrapper.id = CENTRALIZER_ID;
-    wrapper.style.position = 'absolute';
+    wrapper.id = CENTRALIZER_ID; 
+    wrapper.style.position = (options.position && options.position.position) ? options.position.position.toString() : 'absolute';
     wrapper.style.top = (options.position && options.position.top) ? options.position.top.toString() : '0';
     wrapper.style.right = (options.position && options.position.right) ? options.position.right.toString() : '0';
 
