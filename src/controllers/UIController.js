@@ -74,7 +74,7 @@ export default class UIController{
   }  
 
   /**
-  * CREATES an instance of the centralizer
+  * CREATES an instance of the centralizer 
   * Centralizer is the user avatar and app centralizer that get put in the top corner of the user's screen.
   */
   showCentralizer(user, roles, apps, options){
