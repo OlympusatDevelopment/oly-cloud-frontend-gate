@@ -83,9 +83,16 @@ export default class UIController{
     let script = document.createElement('script');
 
     wrapper.id = CENTRALIZER_ID; 
-    wrapper.style.position = (options.position && options.position.position) ? options.position.position.toString() : 'absolute';
-    wrapper.style.top = (options.position && options.position.top) ? options.position.top.toString() : '0';
-    wrapper.style.right = (options.position && options.position.right) ? options.position.right.toString() : '0';
+
+    // Handle styles
+    wrapper.style.position = 'absolute';
+    wrapper.style.top = '0';
+    wrapper.style.right = '0';
+
+    if(options.styles) {
+      Object.entries(options.styles)
+        .forEach(([style, value]) => wrapper.style[style] = value)
+    }
 
     script.type = 'text/javascript';
     script.src = 'https://use.fontawesome.com/33c67670ff.js';// Includes fontawesome, a dependency of the Centralizer component

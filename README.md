@@ -39,6 +39,6 @@ export default () => ({
     timeout: 3000,
     progressBar: true
   },
-  position: {top: '12px', right: 0, position: 'fixed'}
+  styles: {top: '12px', right: 0, position: 'fixed'} // For overall layout, react syntax styles, ie. zIndex instead of z-index
 });
 ```
