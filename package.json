@@ -1,6 +1,6 @@
 {
   "name": "oly-cloud-frontend-gate",
-  "version": "17.2.2",
+  "version": "17.3.0",
   "description": "Olympusat Client SDK Auth0 Gate",
   "main": "dist/oly-cloud-frontend-gate.js",
   "scripts": {
@@ -37,7 +37,8 @@
     "noty": "^3.2.0-beta",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "semver": "^6.0.0"
   },
   "peerDependencies": {}
 }
