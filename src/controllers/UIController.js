@@ -226,5 +226,5 @@ export default class UIController{
 				console.log('display browser detect on DOM!');
 			}
 		});
-	},
+	}
 }
