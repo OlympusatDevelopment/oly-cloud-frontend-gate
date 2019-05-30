@@ -1,7 +1,7 @@
 import UIController from 'src/controllers/UIController';
 import { CONSTANTS } from '@olympusat/oly-cloud-frontend-sdk';
 import utils from 'src/utils';
-import 'src/style.scss'; 
+import 'src/style.scss';
  
 const defaultOptions = {
   brandingColor: '#103463',
@@ -53,6 +53,23 @@ export default class Gate{
             window.Oly.meta.apps,
             options
           );
+        }
+        
+        // Display browser information from sdk options
+        const { browserDetect } = window.Oly.options;
+        if (browserDetect) {
+          const { display, threshold } = browserDetect;
+          const { browserdetect } = window.Oly.utils.fun;
+          
+          // get broswerDetect display
+          if (display) {
+						window.Oly.UI.showBrowserInfoUI(display, browserdetect)
+					}
+					
+					if(threshold) {
+            window.Oly.UI.showBrowserThresholdUI(threshold, browserdetect, window.Oly.meta.app, browserDetect);
+          }
+          
         }
       }
   

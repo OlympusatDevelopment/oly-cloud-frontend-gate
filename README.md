@@ -39,6 +39,16 @@ export default () => ({
     timeout: 3000,
     progressBar: true
   },
+  browserDetect: {
+      display: ['UI', 'console'], // Displays browser info in the console or on DOM.
+      threshold: {
+        display: ['UI', 'console'], // Displays browser threshold notification in the console or on DOM.
+        versions: { // browser versions threshold limit to check for. 
+          chrome: '60.0.0' 
+        },
+        styles: {} // override default threshold notification styles
+      }
+    }
   styles: {top: '12px', right: 0, position: 'fixed'} // For overall layout, react syntax styles, ie. zIndex instead of z-index
 });
 ```
