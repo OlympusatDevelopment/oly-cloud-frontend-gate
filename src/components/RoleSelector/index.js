@@ -22,7 +22,6 @@ export class RoleSelector extends Component {
           <p>Enable Role...</p>
           <ul>
             { this.props.roles
-							.filter(role => role.permissions && role.permissions.length > 0)
               .sort(function(a, b) {
                 const textA = a.name.toUpperCase();
                 const textB = b.name.toUpperCase();
