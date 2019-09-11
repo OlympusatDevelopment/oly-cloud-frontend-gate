@@ -1,0 +1,120 @@
+.olyauth{
+  &__centralizer{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    position: absolute;
+    z-index: 9999;
+    width: 350px;
+    height: auto;
+    right: 0;
+    top: 0;
+
+    button{
+      &:hover{
+        cursor: pointer !important;
+        opacity: 0.7;
+      }
+    }
+
+    &Inner{
+
+    }
+
+    &Container{
+      position: relative;
+      top: 54px;
+      right: 12px;
+      z-index: 0;
+      background: #fff;
+      border: 1px solid #dedddf;
+      border-radius: 1px;
+      box-shadow: 0 0 1em rgba(0,0,0,0.1);
+    }
+
+    &AppContainer{
+      position: relative;
+      top: 54px;
+      right: 12px;
+      z-index: 0;
+      background: #fff;
+      border: 1px solid #dedddf;
+      border-radius: 3px;
+      box-shadow: 0 0 1em rgba(0,0,0,0.1);
+
+      &.top_arr{
+        &:before, &:after{
+          right: 43px;
+        }
+      }
+    }
+
+    &AppsIcon{
+      width: 27px;
+      height: 27px;
+      position: absolute;
+      right: 51px;
+      top: 6px;
+      overflow: hidden;
+      z-index: 9999;
+      padding-top: 7px;
+
+      &:after{
+        content: '\f00a';
+        font-family:FontAwesome;
+        color: #efefef; 
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+
+      &:hover{
+        cursor: pointer !important;
+        opacity: 0.7;
+      }
+    }
+
+    &Gravatar{
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      position: absolute;
+      right: 18px;
+      top: 6px;
+      overflow: hidden;
+      z-index: 9999;
+      color: #fff;
+      font-size: 6px;
+      line-height: 27px;
+
+      &:hover{
+        cursor: pointer !important;
+        opacity: 0.7;
+      }
+
+      &--cssGravatar{
+        display: table;
+
+        p{
+          color: #fff;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          margin: 0;
+          font-size: 16px;
+          text-align: center;
+          font-weight: 100;
+          line-height: 100%;
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+
+      img{
+        text-align: center;
+        max-width: auto;
+        height: 100%;
+      }
+    }
+  }
+}
