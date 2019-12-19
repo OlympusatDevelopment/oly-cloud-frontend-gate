@@ -9,7 +9,7 @@ const defaultOptions = {
   hideAppCentralizer: false,
   profileSettingsLink: false, // or url to link to
   reloadPageOnRoleChange: true,
-  notifications: {// All noty options can be passed in here
+  notifications: {// All noty options can be passed in here..
     layout: 'bottomRight',
     type: 'info',
     animation: {
@@ -23,7 +23,7 @@ const defaultOptions = {
 };
  
 /** 
- * ENTRY POINT for beginning the Gate behaviors & Auth flows
+ * ENTRY POINT for beginning the Gate behaviors & Auth flows...
  * the config argument is the main configuration object passed to the instantitation
  * @param options  
  * @constructor       
