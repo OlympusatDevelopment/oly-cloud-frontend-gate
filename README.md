@@ -1,3 +1,8 @@
+# Deprecated. No longer in production. See oly-clients-monorepo for the port
+
+
+
+
 #### Usage
 To add the Authentication gate and the Centralizer to your project:
 1. Include the oly-sdk & react-oly-gate package
